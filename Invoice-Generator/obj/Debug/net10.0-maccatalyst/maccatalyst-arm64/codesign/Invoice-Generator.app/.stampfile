@@ -1,1 +1,0 @@
--v --force --timestamp=none --sign - --entitlements /Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator/obj/Debug/net10.0-maccatalyst/maccatalyst-arm64/Entitlements.xcent /Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator/bin/Debug/net10.0-maccatalyst/maccatalyst-arm64/Invoice-Generator.app
