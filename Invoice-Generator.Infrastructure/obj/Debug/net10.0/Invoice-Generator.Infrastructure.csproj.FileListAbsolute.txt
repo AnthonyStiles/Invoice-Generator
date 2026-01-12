@@ -1,0 +1,17 @@
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/bin/Debug/net10.0/Invoice-Generator.Infrastructure.deps.json
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/bin/Debug/net10.0/Invoice-Generator.Infrastructure.runtimeconfig.json
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/bin/Debug/net10.0/Invoice-Generator.Infrastructure.dll
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/bin/Debug/net10.0/Invoice-Generator.Infrastructure.pdb
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/bin/Debug/net10.0/Invoice-Generator.Domain.dll
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/bin/Debug/net10.0/Invoice-Generator.Domain.pdb
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.csproj.AssemblyReference.cache
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.AssemblyInfoInputs.cache
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.AssemblyInfo.cs
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-.A3AA4CDB.Up2Date
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.dll
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/refint/Invoice-Generator.Infrastructure.dll
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.pdb
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/Invoice-Generator.Infrastructure.genruntimeconfig.cache
+/Users/ant/Projects/Invoice/Invoice-Generator/Invoice-Generator.Infrastructure/obj/Debug/net10.0/ref/Invoice-Generator.Infrastructure.dll

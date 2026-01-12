@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr_namespace:Invoice_Generator.Models"
+             x:Class="Invoice_Generator.Views.AddressFromEdit"
+             Title="AddressEdit">
+    <Grid
+        RowDefinitions="Auto, *"
+        Padding="50"
+        RowSpacing="50">
+        <Label Text="Enter the address details"/>
+        <VerticalStackLayout Grid.Row="1" Spacing="15">
+            <Entry Placeholder="Name" Text="{Binding Address.Name}"/>
+            <Entry Placeholder="Line 1" Text="{Binding Address.Line1}"/>
+            <Entry Placeholder="Line 2" Text="{Binding Address.Line2}"/>
+            <Entry Placeholder="Post Code" Text="{Binding Address.PostCode}"/>
+            <Entry Placeholder="Email" Text="{Binding Address.Email}"/>
+            <Entry Placeholder="Phone" Text="{Binding Address.Phone}"/>
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
