@@ -1,0 +1,55 @@
+# --- .NET / MAUI Specific ---
+bin/
+obj/
+TestResults/
+[Dd]ebug/
+[Rr]elease/
+publish/
+
+# --- IDE - VS Code ---
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# --- IDE - Visual Studio for Mac / JetBrains Rider ---
+.vs/
+.idea/
+*.user
+*.userprefs
+*.sln.docstates
+
+# --- macOS System Files ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# --- Mobile Specifics ---
+# Android
+*.ap_
+*.apk
+*.dex
+*.keystore
+!public.keystore
+
+# iOS/MacCatalyst
+*.ipa
+*.app
+*.app.dSYM
+*.app.dSYM.zip
+
+# --- Packages & Secrets ---
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+nupkg/
+**/packages/*
+!**/packages/build/
+.env
