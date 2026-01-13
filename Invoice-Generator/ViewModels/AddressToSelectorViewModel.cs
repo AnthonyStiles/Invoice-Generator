@@ -5,6 +5,7 @@ using Invoice_Generator.Adapters;
 using Invoice_Generator.Domain.Entities;
 using Invoice_Generator.Domain.Interfaces;
 using Invoice_Generator.Models;
+using Invoice_Generator.Views;
 
 namespace Invoice_Generator.ViewModels;
 
@@ -22,7 +23,7 @@ public partial class AddressToSelectorViewModel : ObservableObject
     {
         if (SelectedAddress != null && SelectedAddress.ID == Guid.Empty)
         {
-            // await Shell.Current.GoToAsync(nameof(AddressFromEdit));
+            await Shell.Current.GoToAsync(nameof(AddressToEdit));
         }
     }
 

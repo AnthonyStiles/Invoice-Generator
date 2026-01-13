@@ -10,4 +10,13 @@ public partial class AddressToSelector : ContentPage
 		InitializeComponent();
 		BindingContext = new AddressToSelectorViewModel(repository);
 	}
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+		if (BindingContext is AddressToSelectorViewModel viewModel)
+		{
+			viewModel.LoadAddressesCommand.Execute(null);
+		}
+	}
 }
