@@ -12,4 +12,6 @@ public class AppDBContext : DbContext
 
     public DbSet<AddressFrom> FromAddresses { get; set; }
     public DbSet<AddressTo> ToAddresses { get; set; }
+    public DbSet<Work> Work { get; set; }
+    public DbSet<Invoice> Invoices { get; set; }
 }

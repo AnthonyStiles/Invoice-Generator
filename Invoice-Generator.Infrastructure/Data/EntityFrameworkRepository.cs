@@ -21,7 +21,17 @@ public class EntityFrameworkRepository(AppDBContext appDBContext) : IRepository
         _appDBContext.SaveChanges();
     }
 
-    public List<T> GetAll<T>() where T : BaseEntity => _appDBContext.Set<T>().ToList();
+    public List<T> GetAll<T>() where T : BaseEntity
+    {
+        if (typeof(T) == typeof(Invoice))
+        {
+            return _appDBContext.Set<Invoice>()
+                .Include(invoice => invoice.Work)
+                .ToList() as List<T>;
+        }
+        
+        return _appDBContext.Set<T>().ToList();
+    }
 
     public T? GetByID<T>(Guid id) where T : BaseEntity => _appDBContext.Set<T>().SingleOrDefault(entity => entity.Id == id);
 

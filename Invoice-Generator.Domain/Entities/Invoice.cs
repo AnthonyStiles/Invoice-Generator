@@ -1,6 +1,6 @@
-namespace Invoice_Generator.Models;
+namespace Invoice_Generator.Domain.Entities;
 
-public class InvoiceModel
+public class Invoice : BaseEntity
 {
     public string? AddressFromName { get; set; }
     public string? AddressFromLine1 { get; set; }
@@ -12,7 +12,6 @@ public class InvoiceModel
     public string? AddressToLine1 { get; set; }
     public string? AddressToLine2 { get; set; }
     public string? AddressToPostCode { get; set; }
-    public List<WorkModel> Work { get; set; } = [];
+    public ICollection<Work> Work { get; set; } = new List<Work>();
     public DateTime Invoiced { get; set; }
-    public Guid Id { get; set; }
 }

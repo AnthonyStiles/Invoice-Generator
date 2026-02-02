@@ -9,21 +9,32 @@ using Invoice_Generator.Views;
 
 namespace Invoice_Generator.ViewModels;
 
-public partial class AddressToSelectorViewModel : ObservableObject
+[QueryProperty("Invoice", "Invoice")]
+public partial class AddressToSelectorViewModel(IRepository repository) : ObservableObject
 {
-    private readonly IRepository _repository;
-
-    public AddressToSelectorViewModel(IRepository repository)
-    {
-        _repository = repository;
-    }
-
     [RelayCommand]
     private async Task OnAddressChangedAsync()
     {
-        if (SelectedAddress != null && SelectedAddress.ID == Guid.Empty)
+        if (SelectedAddress != null)
         {
-            await Shell.Current.GoToAsync(nameof(AddressToEdit));
+            if (SelectedAddress.Id == Guid.Empty)
+            {
+                await Shell.Current.GoToAsync(nameof(AddressToEdit));
+            }
+            else
+            {
+                Invoice.AddressToLine1 = SelectedAddress.Line1;
+                Invoice.AddressToLine2 = SelectedAddress.Line2;
+                Invoice.AddressToName = SelectedAddress.Name;
+                Invoice.AddressToPostCode = SelectedAddress.PostCode;
+                
+                var data = new Dictionary<string, object>
+                {
+                    { "Invoice", Invoice }
+                };
+                
+                await Shell.Current.GoToAsync(nameof(WorkEdit), data);
+            }
         }
     }
 
@@ -31,10 +42,10 @@ public partial class AddressToSelectorViewModel : ObservableObject
     private void LoadAddresses()
     {
         Addresses.Clear();
-        var data = _repository.GetAll<AddressTo>().ToAddressToModels();
-        var emptyItem = new AddressToModel()
+        var data = repository.GetAll<AddressTo>().ToAddressToModels();
+        var emptyItem = new AddressToModel
         {
-            ID = Guid.Empty,
+            Id = Guid.Empty,
             Name = "Add New",
             Line1 = " ",
             PostCode = " "
@@ -48,15 +59,15 @@ public partial class AddressToSelectorViewModel : ObservableObject
     {
         if (Addresses.Contains(address))
         {
-            AddressFrom entity = _repository.GetByID<AddressFrom>(address.ID);
-            _repository.Delete(entity);
+            var entity = repository.GetByID<AddressTo>(address.Id);
+            repository.Delete<AddressTo>(entity);
             LoadAddresses();
         }
     }
 
-    [ObservableProperty]
-    public ObservableCollection<AddressToModel> addresses = [];
+    [ObservableProperty] public ObservableCollection<AddressToModel> addresses = [];
 
-    [ObservableProperty]
-    public AddressToModel? selectedAddress;
+    [ObservableProperty] public AddressToModel? selectedAddress;
+
+    [ObservableProperty] public InvoiceModel invoice;
 }

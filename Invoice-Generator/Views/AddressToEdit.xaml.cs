@@ -5,9 +5,9 @@ namespace Invoice_Generator.Views;
 
 public partial class AddressToEdit : ContentPage
 {
-	public AddressToEdit(IRepository repository)
-	{
-		InitializeComponent();
-		BindingContext = new AddressToEditViewModel(repository);
-	}
+    public AddressToEdit(IRepository repository)
+    {
+        InitializeComponent();
+        BindingContext = new AddressToEditViewModel(repository);
+    }
 }

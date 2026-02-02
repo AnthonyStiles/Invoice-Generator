@@ -9,17 +9,16 @@ namespace Invoice_Generator.ViewModels;
 public partial class AddressToEditViewModel : ObservableObject
 {
     private readonly IRepository _repository;
-    
-    [ObservableProperty]
-    public AddressToModel address;
+
+    [ObservableProperty] private AddressToModel address;
 
     public AddressToEditViewModel(IRepository repository)
     {
-        Address = new AddressToModel()
+        Address = new AddressToModel
         {
-            ID = Guid.NewGuid()
+            Id = Guid.NewGuid()
         };
-        
+
         _repository = repository;
     }
 

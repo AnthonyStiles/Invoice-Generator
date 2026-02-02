@@ -5,18 +5,18 @@ namespace Invoice_Generator.Views;
 
 public partial class AddressFromSelector : ContentPage
 {
-	public AddressFromSelector(IRepository repository)
-	{
-		InitializeComponent();
-		BindingContext = new AddressFromSelectorViewModel(repository);
-	}
+    public AddressFromSelector(IRepository repository)
+    {
+        InitializeComponent();
+        BindingContext = new AddressFromSelectorViewModel(repository);
+    }
 
-	protected override void OnAppearing()
-	{
-		base.OnAppearing();
-		if (BindingContext is AddressFromSelectorViewModel viewModel)
-		{
-			viewModel.LoadAddressesCommand.Execute(null);
-		}
-	}
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (BindingContext is AddressFromSelectorViewModel viewModel)
+        {
+            viewModel.LoadAddressesCommand.Execute(null);
+        }
+    }
 }

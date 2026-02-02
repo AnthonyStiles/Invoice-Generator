@@ -6,5 +6,5 @@ public class AddressToModel
     public string? Line2 { get; set; }
     public string? Name { get; set; }
     public string? PostCode { get; set; }
-    public Guid ID { get; set; }
+    public Guid Id { get; set; }
 }

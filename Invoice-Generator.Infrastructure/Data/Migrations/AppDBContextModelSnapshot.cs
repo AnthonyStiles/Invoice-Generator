@@ -68,6 +68,94 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
 
                     b.ToTable("ToAddresses");
                 });
+
+            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Invoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressFromEmail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressFromLine1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressFromLine2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressFromName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressFromPhone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressFromPostCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressToLine1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressToLine2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressToName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AddressToPostCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Invoiced")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Work", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Completed")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Hours")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.ToTable("Work");
+                });
+
+            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Work", b =>
+                {
+                    b.HasOne("Invoice_Generator.Domain.Entities.Invoice", "Invoice")
+                        .WithMany("Work")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Invoice");
+                });
+
+            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Invoice", b =>
+                {
+                    b.Navigation("Work");
+                });
 #pragma warning restore 612, 618
         }
     }

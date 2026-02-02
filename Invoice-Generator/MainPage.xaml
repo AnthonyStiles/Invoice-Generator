@@ -1,9 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Invoice_Generator.Models"
+             xmlns:local="clr-namespace:Invoice_Generator.ViewModels"
              x:Class="Invoice_Generator.MainPage"
-             >
+             x:DataType="local:MainPageViewModel"
+             Title=""
+             x:Name="InvoiceSelector">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="edit_square.png" Text="Create New" Command="{Binding OpenNewInvoiceCommand}" />
     </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Padding="50"
+              RowSpacing="50"
+              RowDefinitions="Auto, *">
+            <Label Text="Select an invoice to generate it again."/>
+            <CollectionView Grid.Row="1"
+                ItemsSource="{Binding InvoiceList}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedInvoice}"
+                SelectionChangedCommand="{Binding InvoiceChangedCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:InvoiceModel">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="LightPink"
+                                               Command="{Binding BindingContext.DeleteInvoiceCommand, Source={x:Reference InvoiceSelector}}"
+                                               CommandParameter="{Binding .}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Border>
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding AddressToName}"/>
+                                    <Label Text="{Binding AddressToLine1}"/>
+                                    <Label Text="{Binding Invoiced, StringFormat='{0:d}'}"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
