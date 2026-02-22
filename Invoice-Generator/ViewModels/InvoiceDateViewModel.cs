@@ -8,12 +8,12 @@ using Invoice_Generator.Models;
 namespace Invoice_Generator.ViewModels;
 
 [QueryProperty("Invoice", "Invoice")]
-public partial class AdditionalDetailsViewModel : ObservableObject
+public partial class InvoiceDate : ObservableObject
 {
     private readonly IRepository _repository;
     private readonly IInvoiceGenerator _invoiceGenerator;
 
-    public AdditionalDetailsViewModel(IRepository repository, IInvoiceGenerator invoiceGenerator)
+    public InvoiceDate(IRepository repository, IInvoiceGenerator invoiceGenerator)
     {
         _repository = repository;
         _invoiceGenerator = invoiceGenerator;
