@@ -2,8 +2,8 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Adapters;
+using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
-using Invoice_Generator.Domain.Interfaces;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views;
 

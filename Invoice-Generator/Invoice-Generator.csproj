@@ -23,7 +23,7 @@
 		<ApplicationTitle>Invoice-Generator</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.invoicegenerator</ApplicationId>
+		<ApplicationId>com.anthonyStiles.invoicegenerator.generator</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -76,9 +76,15 @@
 	  </Compile>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services\" />
+	</ItemGroup>
+
 	<PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\generated</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' " />
 
 </Project>

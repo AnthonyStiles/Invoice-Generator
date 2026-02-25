@@ -23,7 +23,9 @@ public partial class WorkEditViewModel : ObservableObject, IQueryAttributable
             && Work.Hours > 0
             && Work.Amount > 0)
         {
-            WorkList.Add(Work);
+            GroupWork(Work);
+            Invoice?.Work.Add(Work);
+            
             Work = new WorkModel
             {
                 Completed = DateTime.Now
@@ -36,14 +38,29 @@ public partial class WorkEditViewModel : ObservableObject, IQueryAttributable
     {
         if (Invoice != null)
         {
-            Invoice.Work = WorkList.ToList();
-
             Dictionary<string, object> data = new()
             {
                 { "Invoice", Invoice }
             };
 
-            await Shell.Current.GoToAsync(nameof(AdditionalDetails), data);
+            await Shell.Current.GoToAsync(nameof(PaymentDetailSelector), data);
+        }
+    }
+    
+    [RelayCommand]
+    private void DeleteWork(WorkModel deletedWork)
+    {
+        var workGroup = WorkList.FirstOrDefault(workItem => deletedWork.Completed.Date == workItem.Date.Date);
+
+        if (workGroup != null)
+        {
+            workGroup.Work.Remove(deletedWork);
+            Invoice?.Work.Remove(deletedWork);
+
+            if (workGroup.Work.Count == 0)
+            {
+                WorkList.Remove(workGroup);
+            }
         }
     }
 
@@ -55,12 +72,33 @@ public partial class WorkEditViewModel : ObservableObject, IQueryAttributable
             
             if (invoice.Work?.Count > 0)
             {
-                WorkList = new ObservableCollection<WorkModel>(invoice.Work);
+                WorkList = [];
+                foreach (var workItem in invoice.Work)
+                {
+                    GroupWork(workItem);
+                }
             }
         }
     }
 
-    [ObservableProperty] private ObservableCollection<WorkModel> workList = [];
+    private void GroupWork(WorkModel workItem)
+    {
+        var workGroup = WorkList.FirstOrDefault(group => group.Date.Date == workItem.Completed.Date);
+        if (workGroup != null)
+        {
+            workGroup.Work.Add(workItem);
+        }
+        else
+        {
+            WorkList.Add(new()
+            {
+                Date = workItem.Completed.Date, 
+                Work = [ workItem ]
+            });
+        }
+    }
+
+    [ObservableProperty] private ObservableCollection<WorkGroupModel> workList = [];
 
     [ObservableProperty] private WorkModel work;
 

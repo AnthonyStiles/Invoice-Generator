@@ -14,7 +14,7 @@
         <Grid Padding="50"
               RowSpacing="50"
               RowDefinitions="Auto, *">
-            <Label Text="Select an invoice to generate it again."/>
+            <Label Text="{Binding Instruction}"/>
             <CollectionView Grid.Row="1"
                 ItemsSource="{Binding InvoiceList}"
                 SelectionMode="Single"
@@ -36,6 +36,7 @@
                                     <Label Text="{Binding AddressToName}"/>
                                     <Label Text="{Binding AddressToLine1}"/>
                                     <Label Text="{Binding Invoiced, StringFormat='{0:d}'}"/>
+                                    <Label Text="{Binding Total, StringFormat='{0:C}'}"/>
                                 </VerticalStackLayout>
                             </Border>
                         </SwipeView>

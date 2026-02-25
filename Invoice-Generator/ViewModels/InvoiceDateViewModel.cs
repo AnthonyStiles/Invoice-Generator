@@ -1,22 +1,26 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Adapters;
+using Invoice_Generator.Application.Handlers;
+using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
-using Invoice_Generator.Domain.Interfaces;
 using Invoice_Generator.Models;
 
 namespace Invoice_Generator.ViewModels;
 
 [QueryProperty("Invoice", "Invoice")]
-public partial class InvoiceDate : ObservableObject
+public partial class InvoiceDateViewModel : ObservableObject
 {
     private readonly IRepository _repository;
     private readonly IInvoiceGenerator _invoiceGenerator;
+    private readonly ICreateInvoiceHandler _createInvoiceHandler;
 
-    public InvoiceDate(IRepository repository, IInvoiceGenerator invoiceGenerator)
+    public InvoiceDateViewModel(IRepository repository, IInvoiceGenerator invoiceGenerator,
+        ICreateInvoiceHandler createInvoiceHandler)
     {
         _repository = repository;
         _invoiceGenerator = invoiceGenerator;
+        _createInvoiceHandler = createInvoiceHandler;
         InvoiceDate = DateTime.Now.Date;
     }
 
@@ -24,9 +28,11 @@ public partial class InvoiceDate : ObservableObject
     private async Task FinishAsync()
     {
         Invoice.Invoiced = InvoiceDate;
+        
         Invoice newInvoice = Invoice.ToInvoice();
-        _repository.Add(newInvoice);
 
+        _createInvoiceHandler.Handle(newInvoice);
+        
         string filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
         _invoiceGenerator.GenerateInvoice(newInvoice, filePath);
         

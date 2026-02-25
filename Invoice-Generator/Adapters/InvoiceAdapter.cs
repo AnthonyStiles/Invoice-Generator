@@ -20,7 +20,12 @@ internal static class InvoiceAdapter
             AddressToLine1 = invoiceModel.AddressToLine1,
             AddressToLine2 = invoiceModel.AddressToLine2,
             AddressToName = invoiceModel.AddressToName,
-            AddressToPostCode = invoiceModel.AddressToPostCode
+            AddressToPostCode = invoiceModel.AddressToPostCode,
+            Number = invoiceModel.Number,
+            AccountHolder = invoiceModel.AccountHolder,
+            Bank = invoiceModel.Bank,
+            SortCode = invoiceModel.SortCode,
+            AccountNumber = invoiceModel.AccountNumber
         };
     }
 
@@ -40,6 +45,12 @@ internal static class InvoiceAdapter
             AddressToName = invoice.AddressToName,
             AddressToPostCode = invoice.AddressToPostCode,
             Invoiced = invoice.Invoiced,
+            Number = invoice.Number,
+            Total = invoice.Total,
+            AccountHolder = invoice.AccountHolder,
+            Bank = invoice.Bank,
+            SortCode = invoice.SortCode,
+            AccountNumber = invoice.AccountNumber,
             Id = invoice.Id
         };
     }

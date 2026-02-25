@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../Invoice-Generator.Domain/Invoice-Generator.Domain.csproj" />
+    <ProjectReference Include="..\Invoice-Generator.Application\Invoice-Generator.Application.csproj" />
   </ItemGroup>
 
 </Project>

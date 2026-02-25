@@ -2,13 +2,14 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Adapters;
+using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
-using Invoice_Generator.Domain.Interfaces;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views;
 
 namespace Invoice_Generator.ViewModels;
 
+[QueryProperty("Invoice", "Invoice")]
 public partial class AddressFromSelectorViewModel(IRepository repository) : ObservableObject
 {
     private AddressFromModel? address;
@@ -28,19 +29,17 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
             }
             else
             {
-                InvoiceModel invoice = new()
-                {
-                    AddressFromEmail = SelectedAddress.Email,
-                    AddressFromLine1 = SelectedAddress.Line1,
-                    AddressFromLine2 = SelectedAddress.Line2,
-                    AddressFromName = SelectedAddress.Name,
-                    AddressFromPhone = SelectedAddress.Phone,
-                    AddressFromPostCode = SelectedAddress.PostCode
-                };
+                Invoice ??= new InvoiceModel();
+                Invoice.AddressFromEmail = SelectedAddress.Email;
+                Invoice.AddressFromLine1 = SelectedAddress.Line1;
+                Invoice.AddressFromLine2 = SelectedAddress.Line2;
+                Invoice.AddressFromName = SelectedAddress.Name;
+                Invoice.AddressFromPhone = SelectedAddress.Phone;
+                Invoice.AddressFromPostCode = SelectedAddress.PostCode;
 
                 var data = new Dictionary<string, object>
                 {
-                    { "Invoice", invoice }
+                    { "Invoice", Invoice }
                 };
 
                 await Shell.Current.GoToAsync(nameof(AddressToSelector), data);
@@ -74,4 +73,6 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
             LoadAddresses();
         }
     }
+    
+    [ObservableProperty] public InvoiceModel invoice;
 }

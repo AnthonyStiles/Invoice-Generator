@@ -1,6 +1,31 @@
+using Invoice_Generator.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Invoice_Generator.Adapters;
+using Invoice_Generator.Application.Interfaces;
+
 namespace Invoice_Generator.ViewModels;
 
-public class PaymentDetailEditViewModel
+public partial class PaymentDetailEditViewModel : ObservableObject
 {
-    
+    private readonly IRepository _repository;
+
+    [ObservableProperty] private PaymentDetailModel paymentDetail;
+
+    public PaymentDetailEditViewModel(IRepository repository)
+    {
+        PaymentDetail = new PaymentDetailModel()
+        {
+            Id = Guid.NewGuid()
+        };
+
+        _repository = repository;
+    }
+
+    [RelayCommand]
+    private async Task SaveAsync()
+    {
+        _repository.Add(PaymentDetail.ToPaymentDetail());
+        await Shell.Current.GoToAsync("..");
+    }
 }

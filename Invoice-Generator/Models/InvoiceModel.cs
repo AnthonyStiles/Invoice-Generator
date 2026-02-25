@@ -14,5 +14,11 @@ public class InvoiceModel
     public string? AddressToPostCode { get; set; }
     public List<WorkModel> Work { get; set; } = [];
     public DateTime Invoiced { get; set; }
+    public string? Number { get; set; }
+    public decimal Total { get; set; }
     public Guid Id { get; set; }
+    public string? Bank { get; set; }
+    public string? AccountHolder { get; set; }
+    public string? AccountNumber { get; set; }
+    public string? SortCode { get; set; }
 }

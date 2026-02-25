@@ -1,4 +1,4 @@
-using Invoice_Generator.Domain.Interfaces;
+using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.ViewModels;
 
 namespace Invoice_Generator.Views;

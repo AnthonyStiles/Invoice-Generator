@@ -3,9 +3,9 @@ using Invoice_Generator.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Domain.Entities;
-using Invoice_Generator.Domain.Interfaces;
 using Invoice_Generator.Models;
 using Invoice_Generator.Adapters;
+using Invoice_Generator.Application.Interfaces;
 
 namespace Invoice_Generator.ViewModels;
 
@@ -31,10 +31,12 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     }
 
     [RelayCommand]
-    private void LoadInvoices()
+    private void PageLoad()
     {
         var invoices = repository.GetAll<Invoice>();
         InvoiceList = new ObservableCollection<InvoiceModel>(invoices.ToInvoiceModels());
+
+        Instruction = invoices.Count > 0 ? "Select one of the previously created invoices generate it again." : "Create an invoice for it to appear here.";
     }
     
     [RelayCommand]
@@ -44,11 +46,13 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
         {
             var entity = repository.GetByID<Invoice>(deletedInvoice.Id);
             if (entity != null) repository.Delete(entity);
-            LoadInvoices();
+            PageLoad();
         }
     }
 
     [ObservableProperty] private InvoiceModel selectedInvoice;
 
     [ObservableProperty] private ObservableCollection<InvoiceModel> invoiceList;
+    
+    [ObservableProperty] private string instruction;
 }

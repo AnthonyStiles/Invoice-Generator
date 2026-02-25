@@ -1,5 +1,5 @@
+using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
-using Invoice_Generator.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Invoice_Generator.Infrastructure.Data;

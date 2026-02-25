@@ -1,15 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Invoice_Generator.Application.Interfaces;
+using Invoice_Generator.ViewModels;
 
 namespace Invoice_Generator.Views;
 
 public partial class PaymentDetailSelector : ContentPage
 {
-    public PaymentDetailSelector()
+    public PaymentDetailSelector(IRepository repository)
     {
         InitializeComponent();
+        BindingContext = new PaymentDetailSelectorViewModel(repository);
+    }
+    
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (BindingContext is PaymentDetailSelectorViewModel viewModel)
+        {
+            viewModel.LoadPaymentDetailsCommand.Execute(null);
+        }
     }
 }

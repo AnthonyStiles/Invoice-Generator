@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice-Generator.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice-Generator.Infrastructure", "Invoice-Generator.Infrastructure\Invoice-Generator.Infrastructure.csproj", "{999B0216-845C-4E60-91C1-179790FFB72A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoice-Generator.Application", "Invoice-Generator.Application\Invoice-Generator.Application.csproj", "{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{999B0216-845C-4E60-91C1-179790FFB72A}.Release|x64.Build.0 = Release|Any CPU
 		{999B0216-845C-4E60-91C1-179790FFB72A}.Release|x86.ActiveCfg = Release|Any CPU
 		{999B0216-845C-4E60-91C1-179790FFB72A}.Release|x86.Build.0 = Release|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Debug|x64.Build.0 = Debug|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Debug|x86.Build.0 = Debug|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Release|x64.ActiveCfg = Release|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Release|x64.Build.0 = Release|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8EE8DB1-306B-4E35-A55F-C5F1D1BAF81F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,6 +12,12 @@ public class Invoice : BaseEntity
     public string? AddressToLine1 { get; set; }
     public string? AddressToLine2 { get; set; }
     public string? AddressToPostCode { get; set; }
+    public string? Number { get; set; }
+    public decimal Total => Work.Sum(work => work.Amount);
     public ICollection<Work> Work { get; set; } = new List<Work>();
     public DateTime Invoiced { get; set; }
+    public string? Bank { get; set; }
+    public string? AccountHolder { get; set; }
+    public string? AccountNumber { get; set; }
+    public string? SortCode { get; set; }
 }

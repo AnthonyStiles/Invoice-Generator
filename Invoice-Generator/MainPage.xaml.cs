@@ -1,4 +1,4 @@
-﻿using Invoice_Generator.Domain.Interfaces;
+﻿using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.ViewModels;
 
 namespace Invoice_Generator;
@@ -16,7 +16,7 @@ public partial class MainPage : ContentPage
 		base.OnAppearing();
 		if (BindingContext is MainPageViewModel viewModel)
 		{
-			viewModel.LoadInvoicesCommand.Execute(null);
+			viewModel.PageLoadCommand.Execute(null);
 		}
 	}
 }

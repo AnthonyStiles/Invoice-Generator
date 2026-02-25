@@ -3,6 +3,7 @@ using System;
 using Invoice_Generator.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Invoice_Generator.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20260207222255_AddInvoiceNumber")]
+    partial class AddInvoiceNumber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
@@ -75,12 +78,6 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AccountHolder")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("AddressFromEmail")
                         .HasColumnType("TEXT");
 
@@ -111,61 +108,15 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                     b.Property<string>("AddressToPostCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Bank")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("Invoiced")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Number")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SortCode")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Invoices");
-                });
-
-            modelBuilder.Entity("Invoice_Generator.Domain.Entities.PaymentDetail", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AccountHolder")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Bank")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reference")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SortCode")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PaymentDetails");
-                });
-
-            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Statistics", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("TotalInvoicesGenerated")
+                    b.Property<int>("Number")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statistics");
+                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("Invoice_Generator.Domain.Entities.Work", b =>

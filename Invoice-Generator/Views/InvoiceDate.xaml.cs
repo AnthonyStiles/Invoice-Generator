@@ -1,13 +1,14 @@
-using Invoice_Generator.Domain.Interfaces;
+using Invoice_Generator.Application.Handlers;
+using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.ViewModels;
 
 namespace Invoice_Generator.Views;
 
-public partial class AdditionalDetails : ContentPage
+public partial class InvoiceDate : ContentPage
 {
-    public AdditionalDetails(IRepository repository, IInvoiceGenerator invoiceGenerator)
+    public InvoiceDate(IRepository repository, IInvoiceGenerator invoiceGenerator, ICreateInvoiceHandler createInvoiceHandler)
     {
         InitializeComponent();
-        BindingContext = new AdditionalDetailsViewModel(repository, invoiceGenerator);
+        BindingContext = new InvoiceDateViewModel(repository, invoiceGenerator, createInvoiceHandler);
     }
 }

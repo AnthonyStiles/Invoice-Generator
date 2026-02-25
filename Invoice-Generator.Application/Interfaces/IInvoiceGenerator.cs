@@ -1,6 +1,6 @@
 using Invoice_Generator.Domain.Entities;
 
-namespace Invoice_Generator.Domain.Interfaces;
+namespace Invoice_Generator.Application.Interfaces;
 
 public interface IInvoiceGenerator
 {

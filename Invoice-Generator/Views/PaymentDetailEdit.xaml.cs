@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Invoice_Generator.Application.Interfaces;
+using Invoice_Generator.ViewModels;
 
 namespace Invoice_Generator.Views;
 
 public partial class PaymentDetailEdit : ContentPage
 {
-    public PaymentDetailEdit()
+    public PaymentDetailEdit(IRepository repository)
     {
         InitializeComponent();
+        BindingContext = new PaymentDetailEditViewModel(repository);
     }
 }

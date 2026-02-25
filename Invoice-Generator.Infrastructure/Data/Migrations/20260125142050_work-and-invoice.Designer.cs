@@ -3,6 +3,7 @@ using System;
 using Invoice_Generator.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Invoice_Generator.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20260125142050_work-and-invoice")]
+    partial class workandinvoice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
@@ -75,97 +78,22 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AccountHolder")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressFromEmail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressFromLine1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressFromLine2")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressFromName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressFromPhone")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressFromPostCode")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressToLine1")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressToLine2")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressToName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AddressToPostCode")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Bank")
+                    b.Property<Guid>("FromId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Invoiced")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Number")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SortCode")
+                    b.Property<Guid>("ToId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FromId");
+
+                    b.HasIndex("ToId");
 
                     b.ToTable("Invoices");
-                });
-
-            modelBuilder.Entity("Invoice_Generator.Domain.Entities.PaymentDetail", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AccountHolder")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AccountNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Bank")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reference")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("SortCode")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PaymentDetails");
-                });
-
-            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Statistics", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("TotalInvoicesGenerated")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Statistics");
                 });
 
             modelBuilder.Entity("Invoice_Generator.Domain.Entities.Work", b =>
@@ -181,12 +109,13 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Hours")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("InvoiceId")
+                    b.Property<Guid?>("InvoiceId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -196,15 +125,30 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                     b.ToTable("Work");
                 });
 
-            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Work", b =>
+            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Invoice", b =>
                 {
-                    b.HasOne("Invoice_Generator.Domain.Entities.Invoice", "Invoice")
-                        .WithMany("Work")
-                        .HasForeignKey("InvoiceId")
+                    b.HasOne("Invoice_Generator.Domain.Entities.AddressFrom", "From")
+                        .WithMany()
+                        .HasForeignKey("FromId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Invoice");
+                    b.HasOne("Invoice_Generator.Domain.Entities.AddressTo", "To")
+                        .WithMany()
+                        .HasForeignKey("ToId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("From");
+
+                    b.Navigation("To");
+                });
+
+            modelBuilder.Entity("Invoice_Generator.Domain.Entities.Work", b =>
+                {
+                    b.HasOne("Invoice_Generator.Domain.Entities.Invoice", null)
+                        .WithMany("Work")
+                        .HasForeignKey("InvoiceId");
                 });
 
             modelBuilder.Entity("Invoice_Generator.Domain.Entities.Invoice", b =>
