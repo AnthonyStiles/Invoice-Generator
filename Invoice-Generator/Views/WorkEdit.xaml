@@ -53,7 +53,7 @@
             <CollectionView Grid.Row="4"
                             Grid.ColumnSpan="3"
                             SelectionMode="None"
-                            ItemsSource="{Binding WorkList}">
+                            ItemsSource="{Binding Invoice.Work}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkGroupModel">
                         <Border>
@@ -75,6 +75,7 @@
                                                     </SwipeItems>
                                                 </SwipeView.RightItems>
                                                 <Grid ColumnDefinitions="2*, 1*, 1*"
+                                                      RowDefinitions="*"
                                                       Padding="10">
                                                     <Label Text="{Binding Description}"/>
                                                     <HorizontalStackLayout Grid.Column="1"

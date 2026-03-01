@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+
 namespace Invoice_Generator.Models;
 
 public class InvoiceModel
@@ -12,7 +14,7 @@ public class InvoiceModel
     public string? AddressToLine1 { get; set; }
     public string? AddressToLine2 { get; set; }
     public string? AddressToPostCode { get; set; }
-    public List<WorkModel> Work { get; set; } = [];
+    public ObservableCollection<WorkGroupModel> Work { get; set; } = [];
     public DateTime Invoiced { get; set; }
     public string? Number { get; set; }
     public decimal Total { get; set; }

@@ -1,12 +1,14 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Invoice_Generator.Helpers;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views;
 
 namespace Invoice_Generator.ViewModels;
 
-public partial class WorkEditViewModel : ObservableObject, IQueryAttributable
+[QueryProperty("Invoice", "Invoice")]
+public partial class WorkEditViewModel : ObservableObject
 {
     public WorkEditViewModel()
     {
@@ -23,8 +25,7 @@ public partial class WorkEditViewModel : ObservableObject, IQueryAttributable
             && Work.Hours > 0
             && Work.Amount > 0)
         {
-            GroupWork(Work);
-            Invoice?.Work.Add(Work);
+            WorkGroupHelper.GroupWorkItem(Invoice.Work, Work);
             
             Work = new WorkModel
             {
@@ -50,57 +51,20 @@ public partial class WorkEditViewModel : ObservableObject, IQueryAttributable
     [RelayCommand]
     private void DeleteWork(WorkModel deletedWork)
     {
-        var workGroup = WorkList.FirstOrDefault(workItem => deletedWork.Completed.Date == workItem.Date.Date);
+        var workGroup = Invoice.Work.FirstOrDefault(workItem => deletedWork.Completed.Date == workItem.Date.Date);
 
         if (workGroup != null)
         {
             workGroup.Work.Remove(deletedWork);
-            Invoice?.Work.Remove(deletedWork);
 
             if (workGroup.Work.Count == 0)
             {
-                WorkList.Remove(workGroup);
+                Invoice.Work.Remove(workGroup);
             }
         }
     }
-
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
-    {
-        if (query.ContainsKey("Invoice") && query["Invoice"] is InvoiceModel invoice)
-        {
-            Invoice = invoice;
-            
-            if (invoice.Work?.Count > 0)
-            {
-                WorkList = [];
-                foreach (var workItem in invoice.Work)
-                {
-                    GroupWork(workItem);
-                }
-            }
-        }
-    }
-
-    private void GroupWork(WorkModel workItem)
-    {
-        var workGroup = WorkList.FirstOrDefault(group => group.Date.Date == workItem.Completed.Date);
-        if (workGroup != null)
-        {
-            workGroup.Work.Add(workItem);
-        }
-        else
-        {
-            WorkList.Add(new()
-            {
-                Date = workItem.Completed.Date, 
-                Work = [ workItem ]
-            });
-        }
-    }
-
-    [ObservableProperty] private ObservableCollection<WorkGroupModel> workList = [];
 
     [ObservableProperty] private WorkModel work;
 
-    private InvoiceModel? Invoice { get; set; }
+    [ObservableProperty] public InvoiceModel invoice;
 }

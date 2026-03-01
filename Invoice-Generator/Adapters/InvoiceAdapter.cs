@@ -33,7 +33,7 @@ internal static class InvoiceAdapter
     {
         return new InvoiceModel
         {
-            Work = invoice.Work.ToList().ToWorkModels(),
+            Work = invoice.Work.ToList().ToWorkGroupModels(),
             AddressFromName = invoice.AddressFromName,
             AddressFromLine1 = invoice.AddressFromLine1,
             AddressFromLine2 = invoice.AddressFromLine2,

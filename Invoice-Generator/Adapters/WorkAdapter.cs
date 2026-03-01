@@ -15,7 +15,7 @@ internal static class WorkAdapter
         return work.ConvertAll(item => item.ToWorkModel());
     }
 
-    private static Work ToWork(this WorkModel workModel)
+    internal static Work ToWork(this WorkModel workModel)
     {
         return new Work()
         {
@@ -27,7 +27,7 @@ internal static class WorkAdapter
         };
     }
 
-    private static WorkModel ToWorkModel(this Work work)
+    internal static WorkModel ToWorkModel(this Work work)
     {
         return new WorkModel()
         {

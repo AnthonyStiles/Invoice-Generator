@@ -10,12 +10,24 @@
         RowSpacing="50">
         <Label Text="Enter the address details"/>
         <VerticalStackLayout Grid.Row="1" Spacing="15">
-            <Entry Placeholder="Name" Text="{Binding Address.Name}"/>
-            <Entry Placeholder="Line 1" Text="{Binding Address.Line1}"/>
-            <Entry Placeholder="Line 2" Text="{Binding Address.Line2}"/>
-            <Entry Placeholder="Post Code" Text="{Binding Address.PostCode}"/>
-            <Entry Placeholder="Email" Text="{Binding Address.Email}"/>
-            <Entry Placeholder="Phone" Text="{Binding Address.Phone}"/>
+            <Entry x:Name="NameEntry" Placeholder="Name" Text="{Binding Address.Name}" 
+                   ReturnType="Next" 
+                   ReturnCommand="{Binding Source={x:Reference Line1Entry}, Path=Focus}"/>
+            <Entry x:Name="Line1Entry" Placeholder="Line 1" Text="{Binding Address.Line1}" 
+                   ReturnType="Next" 
+                   ReturnCommand="{Binding Source={x:Reference Line2Entry}, Path=Focus}"/>
+            <Entry x:Name="Line2Entry" Placeholder="Line 2" Text="{Binding Address.Line2}" 
+                   ReturnType="Next" 
+                   ReturnCommand="{Binding Source={x:Reference PostCodeEntry}, Path=Focus}"/>
+            <Entry x:Name="PostCodeEntry" Placeholder="Post Code" Text="{Binding Address.PostCode}" 
+                   ReturnType="Next" 
+                   ReturnCommand="{Binding Source={x:Reference EmailEntry}, Path=Focus}"/>
+            <Entry x:Name="EmailEntry" Placeholder="Email" Text="{Binding Address.Email}" 
+                   ReturnType="Next" 
+                   ReturnCommand="{Binding Source={x:Reference PhoneEntry}, Path=Focus}"/>
+            <Entry x:Name="PhoneEntry" Placeholder="Phone" Text="{Binding Address.Phone}" 
+                   ReturnType="Done" 
+                   ReturnCommand="{Binding SaveCommand}"/>
             <Button Text="Save" Command="{Binding SaveCommand}"/>
         </VerticalStackLayout>
     </Grid>

@@ -10,4 +10,10 @@ public partial class AddressFromEdit : ContentPage
         InitializeComponent();
         BindingContext = new AddressFromEditViewModel(repository);
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        NameEntry.Focus();
+    }
 }
