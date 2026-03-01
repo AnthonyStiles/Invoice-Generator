@@ -20,9 +20,9 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     [RelayCommand]
     private async Task InvoiceChangedAsync()
     {
-        string filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
         invoiceGenerator.GenerateInvoice(SelectedInvoice.ToInvoice(), filePath);
-        
+
         await Share.Default.RequestAsync(new ShareFileRequest
         {
             Title = "Print PDF",
@@ -36,9 +36,11 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
         var invoices = repository.GetAll<Invoice>();
         InvoiceList = new ObservableCollection<InvoiceModel>(invoices.ToInvoiceModels());
 
-        Instruction = invoices.Count > 0 ? "Select one of the previously created invoices generate it again." : "Create an invoice for it to appear here.";
+        Instruction = invoices.Count > 0
+            ? "Select one of the previously created invoices generate it again."
+            : "Create an invoice for it to appear here.";
     }
-    
+
     [RelayCommand]
     private void DeleteInvoice(InvoiceModel deletedInvoice)
     {
@@ -53,6 +55,6 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     [ObservableProperty] private InvoiceModel selectedInvoice;
 
     [ObservableProperty] private ObservableCollection<InvoiceModel> invoiceList;
-    
+
     [ObservableProperty] private string instruction;
 }

@@ -14,7 +14,7 @@ public partial class PaymentDetailEditViewModel : ObservableObject
 
     public PaymentDetailEditViewModel(IRepository repository)
     {
-        PaymentDetail = new PaymentDetailModel()
+        PaymentDetail = new PaymentDetailModel
         {
             Id = Guid.NewGuid()
         };

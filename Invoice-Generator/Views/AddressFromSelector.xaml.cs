@@ -14,9 +14,6 @@ public partial class AddressFromSelector : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        if (BindingContext is AddressFromSelectorViewModel viewModel)
-        {
-            viewModel.LoadAddressesCommand.Execute(null);
-        }
+        if (BindingContext is AddressFromSelectorViewModel viewModel) viewModel.LoadAddressesCommand.Execute(null);
     }
 }

@@ -10,13 +10,11 @@ public partial class PaymentDetailSelector : ContentPage
         InitializeComponent();
         BindingContext = new PaymentDetailSelectorViewModel(repository);
     }
-    
+
     protected override void OnAppearing()
     {
         base.OnAppearing();
         if (BindingContext is PaymentDetailSelectorViewModel viewModel)
-        {
             viewModel.LoadPaymentDetailsCommand.Execute(null);
-        }
     }
 }

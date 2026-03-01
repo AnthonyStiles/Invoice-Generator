@@ -27,12 +27,12 @@ public partial class AddressToSelectorViewModel(IRepository repository) : Observ
                 Invoice.AddressToLine2 = SelectedAddress.Line2;
                 Invoice.AddressToName = SelectedAddress.Name;
                 Invoice.AddressToPostCode = SelectedAddress.PostCode;
-                
+
                 var data = new Dictionary<string, object>
                 {
                     { "Invoice", Invoice }
                 };
-                
+
                 await Shell.Current.GoToAsync(nameof(WorkEdit), data);
             }
         }

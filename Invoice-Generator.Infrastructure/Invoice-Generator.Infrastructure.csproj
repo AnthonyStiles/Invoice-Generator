@@ -1,28 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <RootNamespace>Invoice_Generator.Infrastructure</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>Invoice_Generator.Infrastructure</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.4" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.1">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.4"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data/" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Data/"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="../Invoice-Generator.Domain/Invoice-Generator.Domain.csproj" />
-    <ProjectReference Include="..\Invoice-Generator.Application\Invoice-Generator.Application.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Invoice-Generator.Domain/Invoice-Generator.Domain.csproj"/>
+        <ProjectReference Include="..\Invoice-Generator.Application\Invoice-Generator.Application.csproj"/>
+    </ItemGroup>
 
 </Project>

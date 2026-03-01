@@ -26,7 +26,7 @@ public partial class WorkEditViewModel : ObservableObject
             && Work.Amount > 0)
         {
             WorkGroupHelper.GroupWorkItem(Invoice.Work, Work);
-            
+
             Work = new WorkModel
             {
                 Completed = DateTime.Now
@@ -47,7 +47,7 @@ public partial class WorkEditViewModel : ObservableObject
             await Shell.Current.GoToAsync(nameof(PaymentDetailSelector), data);
         }
     }
-    
+
     [RelayCommand]
     private void DeleteWork(WorkModel deletedWork)
     {
@@ -57,10 +57,7 @@ public partial class WorkEditViewModel : ObservableObject
         {
             workGroup.Work.Remove(deletedWork);
 
-            if (workGroup.Work.Count == 0)
-            {
-                Invoice.Work.Remove(workGroup);
-            }
+            if (workGroup.Work.Count == 0) Invoice.Work.Remove(workGroup);
         }
     }
 

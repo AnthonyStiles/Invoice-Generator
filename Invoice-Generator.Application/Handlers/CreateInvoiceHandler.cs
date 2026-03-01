@@ -8,8 +8,8 @@ public class CreateInvoiceHandler(IRepository repository) : ICreateInvoiceHandle
 {
     public Invoice Handle(Invoice invoice)
     {
-        Statistics? statistics = repository.GetAll<Statistics>().FirstOrDefault();
-        
+        var statistics = repository.GetAll<Statistics>().FirstOrDefault();
+
         if (statistics == null)
         {
             statistics = new Statistics();

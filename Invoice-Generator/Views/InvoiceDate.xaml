@@ -8,19 +8,19 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Finish"
                      IconImageSource=""
-                     Command="{Binding FinishCommand}"/>
+                     Command="{Binding FinishCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto, Auto"
               Padding="50"
               RowSpacing="50">
-            
-            <Label Text="When is the customer being invoiced?"/>
+
+            <Label Text="When is the customer being invoiced?" />
 
             <DatePicker Grid.Row="1"
                         MinimumDate="01/01/2000"
                         MaximumDate="12/31/2040"
-                        Date="{Binding InvoiceDate}"/>
+                        Date="{Binding InvoiceDate}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

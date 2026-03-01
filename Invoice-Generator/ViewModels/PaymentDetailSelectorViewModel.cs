@@ -27,12 +27,12 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
                 Invoice.AccountHolder = SelectedPaymentDetail.AccountHolder;
                 Invoice.SortCode = SelectedPaymentDetail.SortCode;
                 Invoice.AccountNumber = SelectedPaymentDetail.AccountNumber;
-                
+
                 var data = new Dictionary<string, object>
                 {
                     { "Invoice", Invoice }
                 };
-                
+
                 await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
             }
         }
@@ -63,7 +63,7 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
             LoadPaymentDetails();
         }
     }
-    
+
     [RelayCommand]
     private async Task NavigateNextAsync()
     {
@@ -71,7 +71,7 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
         {
             { "Invoice", Invoice }
         };
-        
+
         await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
     }
 

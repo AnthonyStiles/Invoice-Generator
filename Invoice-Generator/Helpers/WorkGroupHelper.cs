@@ -14,19 +14,16 @@ internal static class WorkGroupHelper
         }
         else
         {
-            var newWorkGroup = new WorkGroupModel()
+            var newWorkGroup = new WorkGroupModel
             {
                 Date = work.Completed.Date,
                 Work = [work]
             };
 
             if (workGroups.Count == 0 || workGroups.Last().Date < newWorkGroup.Date)
-            {
                 workGroups.Add(newWorkGroup);
-            }
             else
-            {
-                for (int i = 0; i < workGroups.Count; i++)
+                for (var i = 0; i < workGroups.Count; i++)
                 {
                     var group = workGroups[i];
                     if (newWorkGroup.Date < group.Date)
@@ -35,7 +32,6 @@ internal static class WorkGroupHelper
                         break;
                     }
                 }
-            }
         }
     }
 }

@@ -14,11 +14,11 @@ public partial class AddressFromEditViewModel : ObservableObject
 
     public AddressFromEditViewModel(IRepository repository)
     {
-        Address = new AddressFromModel()
+        Address = new AddressFromModel
         {
             Id = Guid.NewGuid()
         };
-        
+
         _repository = repository;
     }
 

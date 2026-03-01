@@ -17,7 +17,7 @@ internal static class WorkAdapter
 
     internal static Work ToWork(this WorkModel workModel)
     {
-        return new Work()
+        return new Work
         {
             Id = workModel.Id,
             Completed = workModel.Completed,
@@ -29,7 +29,7 @@ internal static class WorkAdapter
 
     internal static WorkModel ToWorkModel(this Work work)
     {
-        return new WorkModel()
+        return new WorkModel
         {
             Id = work.Id,
             Completed = work.Completed,

@@ -73,6 +73,6 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
             LoadAddresses();
         }
     }
-    
+
     [ObservableProperty] public InvoiceModel invoice;
 }

@@ -24,7 +24,7 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         toAddressParagraph.AddText($"{invoice.AddressToLine1}\n");
         toAddressParagraph.AddText($"{invoice.AddressToLine2}\n");
         toAddressParagraph.AddText($"{invoice.AddressToPostCode}\n");
-        
+
         var fromAddressParagraph = row.Cells[1].AddParagraph();
         fromAddressParagraph.AddFormattedText("Invoiced By:\n", TextFormat.Bold);
         fromAddressParagraph.AddText($"{invoice.AddressFromName}\n");
@@ -51,10 +51,10 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         table.AddColumn("7cm"); // Description
         table.AddColumn("3cm"); // Hours
         table.AddColumn("3cm"); // Amount
-        
+
         var headerRow = table.AddRow();
         headerRow.Shading.Color = Colors.LightGray;
-        
+
         var dateHeader = headerRow.Cells[0].AddParagraph("Date");
         dateHeader.Format.Font.Bold = true;
         dateHeader.Format.SpaceBefore = "0.25cm";
@@ -81,13 +81,13 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         {
             var workRow = table.AddRow();
             workRow.Cells[0].AddParagraph(workGroup.Key.ToString("d"));
-            
+
             var description = workRow.Cells[1].AddParagraph();
             description.Format.SpaceAfter = "0.5cm";
-            
+
             var hours = workRow.Cells[2].AddParagraph();
             hours.Format.SpaceAfter = "0.5cm";
-            
+
             var amount = workRow.Cells[3].AddParagraph();
             amount.Format.SpaceAfter = "0.5cm";
 
@@ -108,13 +108,13 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
                 }
             }
         }
-        
+
         var totalRow = table.AddRow();
-        
+
         var totalLabelColumn = totalRow.Cells[2];
         totalLabelColumn.Borders.Top.Width = Unit.FromPoint(0.5);
         totalLabelColumn.Borders.Top.Color = Colors.LightGray;
-        
+
         var totalLabel = totalLabelColumn.AddParagraph("Total:");
         totalLabel.Format.Font.Bold = true;
 
@@ -127,7 +127,7 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
 
     private void GenerateTotalSection(Section section, Invoice invoice)
     {
-        Paragraph totals = section.AddParagraph();
+        var totals = section.AddParagraph();
         totals.AddText($"Total to be paid: {invoice.Total:C}");
         totals.Format.Font.Bold = true;
         totals.Format.Font.Size = 16;
@@ -140,14 +140,14 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         paymentDetailsTable.AddColumn("4cm");
 
         var row = paymentDetailsTable.AddRow();
-        
+
         var labels = row.Cells[0].AddParagraph();
         labels.AddFormattedText("Payment Details:\n", TextFormat.Bold);
         labels.AddText("Bank:\n");
         labels.AddText("Account Holder:\n");
         labels.AddText("Sort Code:\n");
         labels.AddText("Account Number\n");
-        
+
         var values = row.Cells[1].AddParagraph();
         values.AddText("\n");
         values.AddText($"{invoice.Bank}\n");
@@ -155,14 +155,11 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         values.AddText($"{invoice.SortCode}\n");
         values.AddText($"{invoice.AccountNumber}\n");
     }
-    
+
     public void GenerateInvoice(Invoice invoice, string outputDirectory)
     {
-        if (Capabilities.Build.IsCoreBuild)
-        {
-            GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-        }
-        
+        if (Capabilities.Build.IsCoreBuild) GlobalFontSettings.FontResolver = new FailsafeFontResolver();
+
         var document = new Document
         {
             Info =
@@ -179,13 +176,13 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         title.Format.Font.Size = 20;
         title.Format.Font.Bold = true;
         baseSection.AddParagraph("\n\n");
-        
+
         GenerateAddressSection(baseSection, invoice);
         baseSection.AddParagraph("\n\n");
-        
+
         GenerateInvoiceDetailsSection(baseSection, invoice);
         baseSection.AddParagraph("\n\n");
-        
+
         GenerateWorkSection(baseSection, invoice);
         baseSection.AddParagraph("\n\n");
 
@@ -194,10 +191,10 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
             GeneratePaymentDetailsSection(baseSection, invoice);
             baseSection.AddParagraph("\n\n");
         }
-        
+
         GenerateTotalSection(baseSection, invoice);
 
-        PdfDocumentRenderer pdfDocumentRenderer = new PdfDocumentRenderer();
+        var pdfDocumentRenderer = new PdfDocumentRenderer();
         pdfDocumentRenderer.Document = document;
         pdfDocumentRenderer.RenderDocument();
         pdfDocumentRenderer.PdfDocument.Save(outputDirectory);

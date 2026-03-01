@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Invoice_Generator.ViewModels"
@@ -8,13 +9,13 @@
         RowDefinitions="Auto, *"
         Padding="50"
         RowSpacing="50">
-        <Label Text="Enter the payment details"/>
+        <Label Text="Enter the payment details" />
         <VerticalStackLayout Grid.Row="1" Spacing="15">
-            <Entry Placeholder="Bank Name" Text="{Binding PaymentDetail.Bank}"/>
-            <Entry Placeholder="Account Holder" Text="{Binding PaymentDetail.AccountHolder}"/>
-            <Entry Placeholder="Sort Code" Text="{Binding PaymentDetail.SortCode}"/>
-            <Entry Placeholder="Account Number" Text="{Binding PaymentDetail.AccountNumber}"/>
-            <Button Text="Save" Command="{Binding SaveCommand}"/>
+            <Entry Placeholder="Bank Name" Text="{Binding PaymentDetail.Bank}" />
+            <Entry Placeholder="Account Holder" Text="{Binding PaymentDetail.AccountHolder}" />
+            <Entry Placeholder="Sort Code" Text="{Binding PaymentDetail.SortCode}" />
+            <Entry Placeholder="Account Number" Text="{Binding PaymentDetail.AccountNumber}" />
+            <Button Text="Save" Command="{Binding SaveCommand}" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

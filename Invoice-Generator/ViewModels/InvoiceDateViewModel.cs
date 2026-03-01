@@ -28,20 +28,20 @@ public partial class InvoiceDateViewModel : ObservableObject
     private async Task FinishAsync()
     {
         Invoice.Invoiced = InvoiceDate;
-        
-        Invoice newInvoice = Invoice.ToInvoice();
+
+        var newInvoice = Invoice.ToInvoice();
 
         _createInvoiceHandler.Handle(newInvoice);
-        
-        string filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
+
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
         _invoiceGenerator.GenerateInvoice(newInvoice, filePath);
-        
+
         await Share.Default.RequestAsync(new ShareFileRequest
         {
             Title = "Print PDF",
             File = new ShareFile(filePath)
         });
-        
+
         await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
     }
 
