@@ -25,7 +25,15 @@ public partial class AddressFromEditViewModel : ObservableObject
     [RelayCommand]
     private async Task SaveAsync()
     {
-        _repository.Add(Address.ToAddressFrom());
-        await Shell.Current.GoToAsync("..");
+        if (!string.IsNullOrEmpty(Address.Name)
+            && !string.IsNullOrEmpty(Address.Line1)
+            && !string.IsNullOrEmpty(Address.Line2)
+            && !string.IsNullOrEmpty(Address.PostCode)
+            && !string.IsNullOrEmpty(Address.Email)
+            && !string.IsNullOrEmpty(Address.Phone))
+        {
+            _repository.Add(Address.ToAddressFrom());
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

@@ -10,4 +10,9 @@ public partial class PaymentDetailEdit : ContentPage
         InitializeComponent();
         BindingContext = new PaymentDetailEditViewModel(repository);
     }
+
+    private void OnEntryLoaded(object sender, EventArgs e)
+    {
+        NameEntry.Focus();
+    }
 }

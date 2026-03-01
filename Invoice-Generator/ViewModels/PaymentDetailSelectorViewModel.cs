@@ -13,28 +13,27 @@ namespace Invoice_Generator.ViewModels;
 public partial class PaymentDetailSelectorViewModel(IRepository repository) : ObservableObject
 {
     [RelayCommand]
+    private async Task OnAddNewDetailsAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(PaymentDetailEdit));
+    }
+
+    [RelayCommand]
     private async Task OnPaymentDetailChangedAsync()
     {
         if (SelectedPaymentDetail != null)
         {
-            if (SelectedPaymentDetail.Id == Guid.Empty)
-            {
-                await Shell.Current.GoToAsync(nameof(PaymentDetailEdit));
-            }
-            else
-            {
-                Invoice.Bank = SelectedPaymentDetail.Bank;
-                Invoice.AccountHolder = SelectedPaymentDetail.AccountHolder;
-                Invoice.SortCode = SelectedPaymentDetail.SortCode;
-                Invoice.AccountNumber = SelectedPaymentDetail.AccountNumber;
+            Invoice.Bank = SelectedPaymentDetail.Bank;
+            Invoice.AccountHolder = SelectedPaymentDetail.AccountHolder;
+            Invoice.SortCode = SelectedPaymentDetail.SortCode;
+            Invoice.AccountNumber = SelectedPaymentDetail.AccountNumber;
 
-                var data = new Dictionary<string, object>
-                {
-                    { "Invoice", Invoice }
-                };
+            var data = new Dictionary<string, object>
+            {
+                { "Invoice", Invoice }
+            };
 
-                await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
-            }
+            await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
         }
     }
 
@@ -43,13 +42,6 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
     {
         PaymentDetails.Clear();
         var data = repository.GetAll<PaymentDetail>().ToPaymentDetailModels();
-        var emptyItem = new PaymentDetailModel
-        {
-            Id = Guid.Empty,
-            Bank = "Add New",
-            AccountHolder = " "
-        };
-        data.Insert(0, emptyItem);
         PaymentDetails = new ObservableCollection<PaymentDetailModel>(data);
     }
 

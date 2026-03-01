@@ -11,9 +11,8 @@ public partial class AddressFromEdit : ContentPage
         BindingContext = new AddressFromEditViewModel(repository);
     }
 
-    protected override void OnAppearing()
+    private void OnEntryLoaded(object sender, EventArgs e)
     {
-        base.OnAppearing();
         NameEntry.Focus();
     }
 }

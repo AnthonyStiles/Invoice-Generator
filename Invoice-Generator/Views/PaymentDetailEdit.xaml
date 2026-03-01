@@ -11,10 +11,18 @@
         RowSpacing="50">
         <Label Text="Enter the payment details" />
         <VerticalStackLayout Grid.Row="1" Spacing="15">
-            <Entry Placeholder="Bank Name" Text="{Binding PaymentDetail.Bank}" />
-            <Entry Placeholder="Account Holder" Text="{Binding PaymentDetail.AccountHolder}" />
-            <Entry Placeholder="Sort Code" Text="{Binding PaymentDetail.SortCode}" />
-            <Entry Placeholder="Account Number" Text="{Binding PaymentDetail.AccountNumber}" />
+            <Entry x:Name="NameEntry" Placeholder="Bank Name" Text="{Binding PaymentDetail.Bank}"
+                   ReturnType="Next"
+                   ReturnCommand="{Binding Source={x:Reference AccountHolderEntry}, Path=Focus}"
+                   Loaded="OnEntryLoaded"/>
+            <Entry x:Name="AccountHolderEntry" Placeholder="Account Holder" Text="{Binding PaymentDetail.AccountHolder}"
+                   ReturnType="Next"
+                   ReturnCommand="{Binding Source={x:Reference SortCodeEntry}, Path=Focus}" />
+            <Entry x:Name="SortCodeEntry" Placeholder="Sort Code" Text="{Binding PaymentDetail.SortCode}"
+                   ReturnType="Next"
+                   ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}" />
+            <Entry x:Name="AccountNumberEntry" Placeholder="Account Number" Text="{Binding PaymentDetail.AccountNumber}"
+                   ReturnType="Done" />
             <Button Text="Save" Command="{Binding SaveCommand}" />
         </VerticalStackLayout>
     </Grid>

@@ -13,28 +13,27 @@ namespace Invoice_Generator.ViewModels;
 public partial class AddressToSelectorViewModel(IRepository repository) : ObservableObject
 {
     [RelayCommand]
+    private async Task OnAddNewDetailsAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(AddressToEdit));
+    }
+
+    [RelayCommand]
     private async Task OnAddressChangedAsync()
     {
         if (SelectedAddress != null)
         {
-            if (SelectedAddress.Id == Guid.Empty)
-            {
-                await Shell.Current.GoToAsync(nameof(AddressToEdit));
-            }
-            else
-            {
-                Invoice.AddressToLine1 = SelectedAddress.Line1;
-                Invoice.AddressToLine2 = SelectedAddress.Line2;
-                Invoice.AddressToName = SelectedAddress.Name;
-                Invoice.AddressToPostCode = SelectedAddress.PostCode;
+            Invoice.AddressToLine1 = SelectedAddress.Line1;
+            Invoice.AddressToLine2 = SelectedAddress.Line2;
+            Invoice.AddressToName = SelectedAddress.Name;
+            Invoice.AddressToPostCode = SelectedAddress.PostCode;
 
-                var data = new Dictionary<string, object>
-                {
-                    { "Invoice", Invoice }
-                };
+            var data = new Dictionary<string, object>
+            {
+                { "Invoice", Invoice }
+            };
 
-                await Shell.Current.GoToAsync(nameof(WorkEdit), data);
-            }
+            await Shell.Current.GoToAsync(nameof(WorkEdit), data);
         }
     }
 
@@ -43,14 +42,6 @@ public partial class AddressToSelectorViewModel(IRepository repository) : Observ
     {
         Addresses.Clear();
         var data = repository.GetAll<AddressTo>().ToAddressToModels();
-        var emptyItem = new AddressToModel
-        {
-            Id = Guid.Empty,
-            Name = "Add New",
-            Line1 = " ",
-            PostCode = " "
-        };
-        data.Insert(0, emptyItem);
         Addresses = new ObservableCollection<AddressToModel>(data);
     }
 

@@ -25,7 +25,13 @@ public partial class PaymentDetailEditViewModel : ObservableObject
     [RelayCommand]
     private async Task SaveAsync()
     {
-        _repository.Add(PaymentDetail.ToPaymentDetail());
-        await Shell.Current.GoToAsync("..");
+        if (!string.IsNullOrEmpty(PaymentDetail.Bank)
+            && !string.IsNullOrEmpty(PaymentDetail.AccountHolder)
+            && !string.IsNullOrEmpty(PaymentDetail.SortCode)
+            && !string.IsNullOrEmpty(PaymentDetail.AccountNumber))
+        {
+            _repository.Add(PaymentDetail.ToPaymentDetail());
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

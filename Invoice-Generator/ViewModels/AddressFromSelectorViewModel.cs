@@ -19,31 +19,30 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
     [ObservableProperty] private AddressFromModel? selectedAddress;
 
     [RelayCommand]
+    private async Task OnAddNewDetailsAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(AddressFromEdit));
+    }
+
+    [RelayCommand]
     private async Task OnAddressChangedAsync()
     {
         if (SelectedAddress != null)
         {
-            if (SelectedAddress.Id == Guid.Empty)
-            {
-                await Shell.Current.GoToAsync(nameof(AddressFromEdit));
-            }
-            else
-            {
-                Invoice ??= new InvoiceModel();
-                Invoice.AddressFromEmail = SelectedAddress.Email;
-                Invoice.AddressFromLine1 = SelectedAddress.Line1;
-                Invoice.AddressFromLine2 = SelectedAddress.Line2;
-                Invoice.AddressFromName = SelectedAddress.Name;
-                Invoice.AddressFromPhone = SelectedAddress.Phone;
-                Invoice.AddressFromPostCode = SelectedAddress.PostCode;
+            Invoice ??= new InvoiceModel();
+            Invoice.AddressFromEmail = SelectedAddress.Email;
+            Invoice.AddressFromLine1 = SelectedAddress.Line1;
+            Invoice.AddressFromLine2 = SelectedAddress.Line2;
+            Invoice.AddressFromName = SelectedAddress.Name;
+            Invoice.AddressFromPhone = SelectedAddress.Phone;
+            Invoice.AddressFromPostCode = SelectedAddress.PostCode;
 
-                var data = new Dictionary<string, object>
-                {
-                    { "Invoice", Invoice }
-                };
+            var data = new Dictionary<string, object>
+            {
+                { "Invoice", Invoice }
+            };
 
-                await Shell.Current.GoToAsync(nameof(AddressToSelector), data);
-            }
+            await Shell.Current.GoToAsync(nameof(AddressToSelector), data);
         }
     }
 
@@ -52,14 +51,6 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
     {
         Addresses.Clear();
         var data = repository.GetAll<AddressFrom>().ToAddressFromModels();
-        var emptyItem = new AddressFromModel
-        {
-            Id = Guid.Empty,
-            Name = "Add New",
-            Line1 = " ",
-            PostCode = " "
-        };
-        data.Insert(0, emptyItem);
         Addresses = new ObservableCollection<AddressFromModel>(data);
     }
 
