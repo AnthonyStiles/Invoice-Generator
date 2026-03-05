@@ -12,6 +12,12 @@ namespace Invoice_Generator.ViewModels;
 [QueryProperty("Invoice", "Invoice")]
 public partial class PaymentDetailSelectorViewModel(IRepository repository) : ObservableObject
 {
+    [ObservableProperty] public InvoiceModel invoice;
+
+    [ObservableProperty] public ObservableCollection<PaymentDetailModel> paymentDetails = [];
+
+    [ObservableProperty] public PaymentDetailModel? selectedPaymentDetail;
+
     [RelayCommand]
     private async Task OnAddNewDetailsAsync()
     {
@@ -66,10 +72,4 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
 
         await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
     }
-
-    [ObservableProperty] public ObservableCollection<PaymentDetailModel> paymentDetails = [];
-
-    [ObservableProperty] public PaymentDetailModel? selectedPaymentDetail;
-
-    [ObservableProperty] public InvoiceModel invoice;
 }

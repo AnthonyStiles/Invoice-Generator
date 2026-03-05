@@ -1,8 +1,8 @@
-using Invoice_Generator.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Adapters;
 using Invoice_Generator.Application.Interfaces;
+using Invoice_Generator.Models;
 
 namespace Invoice_Generator.ViewModels;
 

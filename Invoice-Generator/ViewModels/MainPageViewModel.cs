@@ -1,16 +1,22 @@
 using System.Collections.ObjectModel;
-using Invoice_Generator.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Invoice_Generator.Domain.Entities;
-using Invoice_Generator.Models;
 using Invoice_Generator.Adapters;
 using Invoice_Generator.Application.Interfaces;
+using Invoice_Generator.Domain.Entities;
+using Invoice_Generator.Models;
+using Invoice_Generator.Views;
 
 namespace Invoice_Generator.ViewModels;
 
 public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator invoiceGenerator) : ObservableObject
 {
+    [ObservableProperty] private string instruction;
+
+    [ObservableProperty] private ObservableCollection<InvoiceModel> invoiceList;
+
+    [ObservableProperty] private InvoiceModel selectedInvoice;
+
     [RelayCommand]
     private async Task OpenNewInvoiceAsync()
     {
@@ -51,10 +57,4 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
             PageLoad();
         }
     }
-
-    [ObservableProperty] private InvoiceModel selectedInvoice;
-
-    [ObservableProperty] private ObservableCollection<InvoiceModel> invoiceList;
-
-    [ObservableProperty] private string instruction;
 }

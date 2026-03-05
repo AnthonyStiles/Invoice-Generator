@@ -12,6 +12,12 @@ namespace Invoice_Generator.ViewModels;
 [QueryProperty("Invoice", "Invoice")]
 public partial class AddressToSelectorViewModel(IRepository repository) : ObservableObject
 {
+    [ObservableProperty] public ObservableCollection<AddressToModel> addresses = [];
+
+    [ObservableProperty] public InvoiceModel invoice;
+
+    [ObservableProperty] public AddressToModel? selectedAddress;
+
     [RelayCommand]
     private async Task OnAddNewDetailsAsync()
     {
@@ -55,10 +61,4 @@ public partial class AddressToSelectorViewModel(IRepository repository) : Observ
             LoadAddresses();
         }
     }
-
-    [ObservableProperty] public ObservableCollection<AddressToModel> addresses = [];
-
-    [ObservableProperty] public AddressToModel? selectedAddress;
-
-    [ObservableProperty] public InvoiceModel invoice;
 }

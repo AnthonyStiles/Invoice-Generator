@@ -1,9 +1,9 @@
 ﻿using Invoice_Generator.Application.Handlers;
 using Invoice_Generator.Application.Interfaces;
-using Microsoft.Extensions.Logging;
 using Invoice_Generator.Infrastructure;
 using Invoice_Generator.Infrastructure.Data;
 using Invoice_Generator.Infrastructure.InvoiceGeneration;
+using Microsoft.Extensions.Logging;
 
 namespace Invoice_Generator;
 

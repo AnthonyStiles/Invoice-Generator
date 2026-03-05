@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Helpers;
@@ -10,6 +9,10 @@ namespace Invoice_Generator.ViewModels;
 [QueryProperty("Invoice", "Invoice")]
 public partial class WorkEditViewModel : ObservableObject
 {
+    [ObservableProperty] public InvoiceModel invoice;
+
+    [ObservableProperty] private WorkModel work;
+
     public WorkEditViewModel()
     {
         Work = new WorkModel
@@ -60,8 +63,4 @@ public partial class WorkEditViewModel : ObservableObject
             if (workGroup.Work.Count == 0) Invoice.Work.Remove(workGroup);
         }
     }
-
-    [ObservableProperty] private WorkModel work;
-
-    [ObservableProperty] public InvoiceModel invoice;
 }

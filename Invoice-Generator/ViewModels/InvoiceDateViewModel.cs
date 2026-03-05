@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Adapters;
 using Invoice_Generator.Application.Handlers;
 using Invoice_Generator.Application.Interfaces;
-using Invoice_Generator.Domain.Entities;
 using Invoice_Generator.Models;
 
 namespace Invoice_Generator.ViewModels;
@@ -11,9 +10,13 @@ namespace Invoice_Generator.ViewModels;
 [QueryProperty("Invoice", "Invoice")]
 public partial class InvoiceDateViewModel : ObservableObject
 {
-    private readonly IRepository _repository;
-    private readonly IInvoiceGenerator _invoiceGenerator;
     private readonly ICreateInvoiceHandler _createInvoiceHandler;
+    private readonly IInvoiceGenerator _invoiceGenerator;
+    private readonly IRepository _repository;
+
+    [ObservableProperty] private InvoiceModel invoice;
+
+    [ObservableProperty] private DateTime invoiceDate;
 
     public InvoiceDateViewModel(IRepository repository, IInvoiceGenerator invoiceGenerator,
         ICreateInvoiceHandler createInvoiceHandler)
@@ -44,8 +47,4 @@ public partial class InvoiceDateViewModel : ObservableObject
 
         await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
     }
-
-    [ObservableProperty] private DateTime invoiceDate;
-
-    [ObservableProperty] private InvoiceModel invoice;
 }

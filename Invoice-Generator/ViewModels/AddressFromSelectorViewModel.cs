@@ -16,6 +16,8 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
 
     [ObservableProperty] private ObservableCollection<AddressFromModel> addresses = [];
 
+    [ObservableProperty] public InvoiceModel invoice;
+
     [ObservableProperty] private AddressFromModel? selectedAddress;
 
     [RelayCommand]
@@ -64,6 +66,4 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
             LoadAddresses();
         }
     }
-
-    [ObservableProperty] public InvoiceModel invoice;
 }

@@ -14,7 +14,7 @@
             <Entry x:Name="NameEntry" Placeholder="Name" Text="{Binding Address.Name}"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference Line1Entry}, Path=Focus}"
-                   Loaded="OnEntryLoaded"/>
+                   Loaded="OnEntryLoaded" />
             <Entry x:Name="Line1Entry" Placeholder="Line 1" Text="{Binding Address.Line1}"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference Line2Entry}, Path=Focus}" />

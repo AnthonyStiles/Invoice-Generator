@@ -10,6 +10,50 @@ namespace Invoice_Generator.Infrastructure.InvoiceGeneration;
 
 public class MigraDocInvoiceGenerator : IInvoiceGenerator
 {
+    public void GenerateInvoice(Invoice invoice, string outputDirectory)
+    {
+        if (Capabilities.Build.IsCoreBuild) GlobalFontSettings.FontResolver = new FailsafeFontResolver();
+
+        var document = new Document
+        {
+            Info =
+            {
+                Title = "Invoice"
+            }
+        };
+
+        ApplyStyle(document);
+
+        var baseSection = document.AddSection();
+
+        var title = baseSection.AddParagraph("INVOICE");
+        title.Format.Font.Size = 20;
+        title.Format.Font.Bold = true;
+        baseSection.AddParagraph("\n\n");
+
+        GenerateAddressSection(baseSection, invoice);
+        baseSection.AddParagraph("\n\n");
+
+        GenerateInvoiceDetailsSection(baseSection, invoice);
+        baseSection.AddParagraph("\n\n");
+
+        GenerateWorkSection(baseSection, invoice);
+        baseSection.AddParagraph("\n\n");
+
+        if (!string.IsNullOrEmpty(invoice.Bank))
+        {
+            GeneratePaymentDetailsSection(baseSection, invoice);
+            baseSection.AddParagraph("\n\n");
+        }
+
+        GenerateTotalSection(baseSection, invoice);
+
+        var pdfDocumentRenderer = new PdfDocumentRenderer();
+        pdfDocumentRenderer.Document = document;
+        pdfDocumentRenderer.RenderDocument();
+        pdfDocumentRenderer.PdfDocument.Save(outputDirectory);
+    }
+
     private static void GenerateAddressSection(Section section, Invoice invoice)
     {
         var addressTable = section.AddTable();
@@ -154,50 +198,6 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         values.AddText($"{invoice.AccountHolder}\n");
         values.AddText($"{invoice.SortCode}\n");
         values.AddText($"{invoice.AccountNumber}\n");
-    }
-
-    public void GenerateInvoice(Invoice invoice, string outputDirectory)
-    {
-        if (Capabilities.Build.IsCoreBuild) GlobalFontSettings.FontResolver = new FailsafeFontResolver();
-
-        var document = new Document
-        {
-            Info =
-            {
-                Title = "Invoice"
-            }
-        };
-
-        ApplyStyle(document);
-
-        var baseSection = document.AddSection();
-
-        var title = baseSection.AddParagraph("INVOICE");
-        title.Format.Font.Size = 20;
-        title.Format.Font.Bold = true;
-        baseSection.AddParagraph("\n\n");
-
-        GenerateAddressSection(baseSection, invoice);
-        baseSection.AddParagraph("\n\n");
-
-        GenerateInvoiceDetailsSection(baseSection, invoice);
-        baseSection.AddParagraph("\n\n");
-
-        GenerateWorkSection(baseSection, invoice);
-        baseSection.AddParagraph("\n\n");
-
-        if (!string.IsNullOrEmpty(invoice.Bank))
-        {
-            GeneratePaymentDetailsSection(baseSection, invoice);
-            baseSection.AddParagraph("\n\n");
-        }
-
-        GenerateTotalSection(baseSection, invoice);
-
-        var pdfDocumentRenderer = new PdfDocumentRenderer();
-        pdfDocumentRenderer.Document = document;
-        pdfDocumentRenderer.RenderDocument();
-        pdfDocumentRenderer.PdfDocument.Save(outputDirectory);
     }
 
     private void ApplyStyle(Document document)

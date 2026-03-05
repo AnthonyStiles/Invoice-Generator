@@ -1,6 +1,5 @@
 ﻿using Invoice_Generator.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Invoice_Generator;
 
