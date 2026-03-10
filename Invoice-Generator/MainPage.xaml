@@ -12,8 +12,8 @@
         <ToolbarItem IconImageSource="edit_square.png" Text="Create New" Command="{Binding OpenNewInvoiceCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid Padding="50"
-              RowSpacing="50"
+        <Grid Padding="30"
+              RowSpacing="30"
               RowDefinitions="Auto, *">
             <Label Text="{Binding Instruction}" />
             <CollectionView Grid.Row="1"
@@ -27,17 +27,17 @@
                             <SwipeView.RightItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Delete"
-                                               BackgroundColor="LightPink"
+                                               BackgroundColor="{StaticResource Danger}"
                                                Command="{Binding BindingContext.DeleteInvoiceCommand, Source={x:Reference InvoiceSelector}}"
                                                CommandParameter="{Binding .}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
-                            <Border>
+                            <Border Style="{StaticResource CardStyle}">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding AddressToName}" />
-                                    <Label Text="{Binding AddressToLine1}" />
-                                    <Label Text="{Binding Invoiced, StringFormat='{0:d}'}" />
-                                    <Label Text="{Binding Total, StringFormat='{0:C}'}" />
+                                    <Label Text="{Binding AddressToName}" Style="{StaticResource BodyText}" />
+                                    <Label Text="{Binding AddressToLine1}" Style="{StaticResource BodyText}" />
+                                    <Label Text="{Binding Invoiced, StringFormat='{0:d}'}" Style="{StaticResource BodyText}" />
+                                    <Label Text="{Binding Total, StringFormat='{0:C}'}" Style="{StaticResource BodyText}" />
                                 </VerticalStackLayout>
                             </Border>
                         </SwipeView>

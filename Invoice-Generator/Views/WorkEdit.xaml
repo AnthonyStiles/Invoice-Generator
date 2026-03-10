@@ -15,15 +15,16 @@
     <ContentPage.Content>
         <Grid RowDefinitions="Auto, Auto, Auto, Auto, *"
               ColumnDefinitions="*, Auto, Auto"
-              Padding="50"
-              RowSpacing="15"
+              Padding="30"
+              RowSpacing="20"
               ColumnSpacing="10">
 
-            <Label Grid.ColumnSpan="5"
+            <Label Grid.ColumnSpan="3"
                    Text="What work is being invoiced?" />
 
             <DatePicker Grid.Row="1"
-                        Margin="0,50,0,0"
+                        Grid.ColumnSpan="3"
+                        Margin="0,10,0,0"
                         MinimumDate="01/01/2000"
                         MaximumDate="12/31/2040"
                         Date="{Binding Work.Completed}" />
@@ -36,19 +37,21 @@
                    Grid.Column="1"
                    Placeholder="Hours"
                    Keyboard="Numeric"
+                   WidthRequest="80"
                    Text="{Binding Work.Hours}" />
 
             <Entry Grid.Row="2"
                    Grid.Column="2"
                    Placeholder="Amount"
                    Keyboard="Numeric"
+                   WidthRequest="100"
                    Text="{Binding Work.Amount}" />
 
             <Button Grid.Row="3"
                     Grid.ColumnSpan="3"
                     Text="Add"
                     Command="{Binding AddWorkCommand}"
-                    Margin="0,0,0,20" />
+                    Margin="0,10,0,10" />
 
             <CollectionView Grid.Row="4"
                             Grid.ColumnSpan="3"
@@ -56,10 +59,10 @@
                             ItemsSource="{Binding Invoice.Work}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:WorkGroupModel">
-                        <Border>
+                        <Border Style="{StaticResource CardStyle}">
                             <Grid RowDefinitions="Auto, *"
-                                  RowSpacing="15">
-                                <Label Text="{Binding Date, StringFormat='{0:d}'}" />
+                                  RowSpacing="12">
+                                <Label Text="{Binding Date, StringFormat='{0:D}'}" Style="{StaticResource BodyText}" />
                                 <CollectionView Grid.Row="1"
                                                 SelectionMode="None"
                                                 ItemsSource="{Binding Work}">
@@ -69,24 +72,24 @@
                                                 <SwipeView.RightItems>
                                                     <SwipeItems>
                                                         <SwipeItem Text="Delete"
-                                                                   BackgroundColor="LightPink"
+                                                                   BackgroundColor="{StaticResource Danger}"
                                                                    Command="{Binding BindingContext.DeleteWorkCommand, Source={x:Reference WorkEditView}}"
                                                                    CommandParameter="{Binding .}" />
                                                     </SwipeItems>
                                                 </SwipeView.RightItems>
-                                                <Grid ColumnDefinitions="2*, 1*, 1*"
-                                                      RowDefinitions="*"
-                                                      Padding="10">
-                                                    <Label Text="{Binding Description}" />
-                                                    <HorizontalStackLayout Grid.Column="1"
-                                                                           Spacing="5"
-                                                                           HorizontalOptions="End">
-                                                        <Label Text="{Binding Hours}" />
-                                                        <Label Text="Hours" />
-                                                    </HorizontalStackLayout>
+                                                <Grid ColumnDefinitions="*, Auto, Auto"
+                                                      Padding="0,8">
+                                                    <Label Text="{Binding Description}" Style="{StaticResource BodyText}" VerticalOptions="Center" />
+                                                    <Label Grid.Column="1"
+                                                           Text="{Binding Hours, StringFormat='{0} hrs'}"
+                                                           Style="{StaticResource BodyText}"
+                                                           VerticalOptions="Center"
+                                                           Margin="10,0" />
                                                     <Label Grid.Column="2"
                                                            HorizontalTextAlignment="End"
-                                                           Text="{Binding Amount, StringFormat='{0:C}'}" />
+                                                           Text="{Binding Amount, StringFormat='{0:C}'}"
+                                                           Style="{StaticResource BodyText}"
+                                                           VerticalOptions="Center" />
                                                 </Grid>
                                             </SwipeView>
                                         </DataTemplate>

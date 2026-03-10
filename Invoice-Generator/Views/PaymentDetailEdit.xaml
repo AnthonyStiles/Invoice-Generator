@@ -7,10 +7,10 @@
              x:DataType="local:PaymentDetailEditViewModel">
     <Grid
         RowDefinitions="Auto, *"
-        Padding="50"
-        RowSpacing="50">
+        Padding="30"
+        RowSpacing="30">
         <Label Text="Enter the payment details" />
-        <VerticalStackLayout Grid.Row="1" Spacing="15">
+        <VerticalStackLayout Grid.Row="1" Spacing="20">
             <Entry x:Name="NameEntry" Placeholder="Bank Name" Text="{Binding PaymentDetail.Bank}"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference AccountHolderEntry}, Path=Focus}"
@@ -24,7 +24,8 @@
                    ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}" />
             <Entry x:Name="AccountNumberEntry" Placeholder="Account Number"
                    Text="{Binding PaymentDetail.AccountNumber}"
-                   ReturnType="Done" />
+                   ReturnType="Done"
+                   ReturnCommand="{Binding SaveCommand}" />
             <Button Text="Save" Command="{Binding SaveCommand}" />
         </VerticalStackLayout>
     </Grid>

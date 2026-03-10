@@ -12,8 +12,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto, Auto"
-              Padding="50"
-              RowSpacing="50">
+              Padding="30"
+              RowSpacing="30">
 
             <Label Text="When is the customer being invoiced?" />
 

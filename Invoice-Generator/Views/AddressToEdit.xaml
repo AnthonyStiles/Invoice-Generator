@@ -7,10 +7,10 @@
              x:DataType="local:AddressToEditViewModel">
     <Grid
         RowDefinitions="Auto, *"
-        Padding="50"
-        RowSpacing="50">
+        Padding="30"
+        RowSpacing="30">
         <Label Text="Enter the address details" />
-        <VerticalStackLayout Grid.Row="1" Spacing="15">
+        <VerticalStackLayout Grid.Row="1" Spacing="20">
             <Entry x:Name="NameEntry" Placeholder="Name" Text="{Binding Address.Name}"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference Line1Entry}, Path=Focus}"

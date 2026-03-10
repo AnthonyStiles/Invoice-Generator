@@ -9,8 +9,8 @@
              x:Name="AddressSelector">
     <Grid
         RowDefinitions="Auto, Auto, *"
-        Padding="50"
-        RowSpacing="50">
+        Padding="30"
+        RowSpacing="30">
         <Label Text="Who is the invoice to?" />
         <Button Grid.Row="1"
                 Text="Add New Details"
@@ -27,16 +27,16 @@
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete"
-                                           BackgroundColor="LightPink"
+                                           BackgroundColor="{StaticResource Danger}"
                                            Command="{Binding BindingContext.DeleteAddressCommand, Source={x:Reference AddressSelector}}"
                                            CommandParameter="{Binding .}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <Border>
+                        <Border Style="{StaticResource CardStyle}">
                             <VerticalStackLayout>
-                                <Label Text="{Binding Name}" />
-                                <Label Text="{Binding Line1}" />
-                                <Label Text="{Binding PostCode}" />
+                                <Label Text="{Binding Name}" Style="{StaticResource BodyText}" />
+                                <Label Text="{Binding Line1}" Style="{StaticResource BodyText}" />
+                                <Label Text="{Binding PostCode}" Style="{StaticResource BodyText}" />
                             </VerticalStackLayout>
                         </Border>
                     </SwipeView>
