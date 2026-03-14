@@ -39,6 +39,8 @@ public partial class AddressToSelectorViewModel(IRepository repository) : Observ
                 { "Invoice", Invoice }
             };
 
+            SelectedAddress = null;
+
             await Shell.Current.GoToAsync(nameof(WorkEdit), data);
         }
     }

@@ -44,6 +44,8 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
                 { "Invoice", Invoice }
             };
 
+            SelectedAddress = null;
+
             await Shell.Current.GoToAsync(nameof(AddressToSelector), data);
         }
     }

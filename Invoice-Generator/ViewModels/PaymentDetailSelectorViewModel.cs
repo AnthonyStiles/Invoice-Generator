@@ -39,6 +39,8 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
                 { "Invoice", Invoice }
             };
 
+            SelectedPaymentDetail = null;
+
             await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
         }
     }

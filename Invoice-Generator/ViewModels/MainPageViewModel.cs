@@ -34,6 +34,8 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
             Title = "Print PDF",
             File = new ShareFile(filePath)
         });
+
+        SelectedInvoice = null;
     }
 
     [RelayCommand]
