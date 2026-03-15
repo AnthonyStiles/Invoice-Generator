@@ -40,7 +40,7 @@ public partial class WorkEditViewModel : ObservableObject
     [RelayCommand]
     private async Task NavigateNextAsync()
     {
-        if (Invoice != null)
+        if (Invoice.Work.Count > 0)
         {
             Dictionary<string, object> data = new()
             {

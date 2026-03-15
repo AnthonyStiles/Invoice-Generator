@@ -15,7 +15,7 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.5");
 
             modelBuilder.Entity("Invoice_Generator.Domain.Entities.AddressFrom", b =>
                 {
@@ -24,21 +24,27 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Line1")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Line2")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
+                        .HasMaxLength(11)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PostCode")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -53,15 +59,19 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Line1")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Line2")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PostCode")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -76,42 +86,55 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AccountHolder")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AccountNumber")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressFromEmail")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressFromLine1")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressFromLine2")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressFromName")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressFromPhone")
+                        .HasMaxLength(11)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressFromPostCode")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressToLine1")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressToLine2")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressToName")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AddressToPostCode")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Bank")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Invoiced")
@@ -121,6 +144,7 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SortCode")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -135,18 +159,22 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AccountHolder")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AccountNumber")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Bank")
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Reference")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SortCode")
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -181,6 +209,7 @@ namespace Invoice_Generator.Infrastructure.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Hours")

@@ -31,7 +31,8 @@
 
             <Entry Grid.Row="2"
                    Placeholder="Description"
-                   Text="{Binding Work.Description}" />
+                   Text="{Binding Work.Description}"
+                   MaxLength="200" />
 
             <Entry Grid.Row="2"
                    Grid.Column="1"

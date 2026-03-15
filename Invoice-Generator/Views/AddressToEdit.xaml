@@ -11,17 +11,29 @@
         RowSpacing="30">
         <Label Text="Enter the address details" />
         <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Entry x:Name="NameEntry" Placeholder="Name" Text="{Binding Address.Name}"
+            <Entry x:Name="NameEntry" 
+                   Placeholder="Name" 
+                   Text="{Binding Address.Name}"
+                   MaxLength="50"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference Line1Entry}, Path=Focus}"
                    Loaded="OnEntryLoaded" />
-            <Entry x:Name="Line1Entry" Placeholder="Line 1" Text="{Binding Address.Line1}"
+            <Entry x:Name="Line1Entry" 
+                   Placeholder="Line 1" 
+                   Text="{Binding Address.Line1}"
+                   MaxLength="50"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference Line2Entry}, Path=Focus}" />
-            <Entry x:Name="Line2Entry" Placeholder="Line 2" Text="{Binding Address.Line2}"
+            <Entry x:Name="Line2Entry" 
+                   Placeholder="Line 2" 
+                   Text="{Binding Address.Line2}"
+                   MaxLength="50"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference PostCodeEntry}, Path=Focus}" />
-            <Entry x:Name="PostCodeEntry" Placeholder="Post Code" Text="{Binding Address.PostCode}"
+            <Entry x:Name="PostCodeEntry" 
+                   Placeholder="Post Code" 
+                   Text="{Binding Address.PostCode}"
+                   MaxLength="8"
                    ReturnType="Done"
                    ReturnCommand="{Binding SaveCommand}" />
             <Button Text="Save" Command="{Binding SaveCommand}" />

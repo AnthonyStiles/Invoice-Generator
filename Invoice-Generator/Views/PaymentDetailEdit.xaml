@@ -3,6 +3,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Invoice_Generator.ViewModels"
+             xmlns:behaviours="clr-namespace:Invoice_Generator.Behaviours"
              x:Class="Invoice_Generator.Views.PaymentDetailEdit"
              x:DataType="local:PaymentDetailEditViewModel">
     <Grid
@@ -11,19 +12,34 @@
         RowSpacing="30">
         <Label Text="Enter the payment details" />
         <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Entry x:Name="NameEntry" Placeholder="Bank Name" Text="{Binding PaymentDetail.Bank}"
+            <Entry x:Name="NameEntry" 
+                   Placeholder="Bank Name" 
+                   Text="{Binding PaymentDetail.Bank}"
+                   MaxLength="50"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference AccountHolderEntry}, Path=Focus}"
                    Loaded="OnEntryLoaded" />
-            <Entry x:Name="AccountHolderEntry" Placeholder="Account Holder"
+            <Entry x:Name="AccountHolderEntry" 
+                   Placeholder="Account Holder"
                    Text="{Binding PaymentDetail.AccountHolder}"
+                   MaxLength="50"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference SortCodeEntry}, Path=Focus}" />
-            <Entry x:Name="SortCodeEntry" Placeholder="Sort Code" Text="{Binding PaymentDetail.SortCode}"
+            <Entry x:Name="SortCodeEntry"
+                   Placeholder="Sort Code"
+                   Keyboard="Numeric"
+                   Text="{Binding PaymentDetail.SortCode}"
+                   MaxLength="8"
                    ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}" />
-            <Entry x:Name="AccountNumberEntry" Placeholder="Account Number"
+                   ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}" >
+                   <Entry.Behaviors>
+                          <behaviours:SortCodeMaskBehaviour />
+                   </Entry.Behaviors>
+            </Entry>
+            <Entry x:Name="AccountNumberEntry" 
+                   Placeholder="Account Number"
                    Text="{Binding PaymentDetail.AccountNumber}"
+                   MaxLength="8"
                    ReturnType="Done"
                    ReturnCommand="{Binding SaveCommand}" />
             <Button Text="Save" Command="{Binding SaveCommand}" />
