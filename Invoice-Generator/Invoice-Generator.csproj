@@ -20,7 +20,7 @@
         <Nullable>enable</Nullable>
 
         <!-- Display name -->
-        <ApplicationTitle>Invoice Generator</ApplicationTitle>
+        <ApplicationTitle>Invoiced</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>com.anthonyStiles.invoicegenerator.generator</ApplicationId>

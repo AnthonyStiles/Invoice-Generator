@@ -6,7 +6,7 @@ namespace Invoice_Generator.Application.Handlers;
 
 public class CreateInvoiceHandler(IRepository repository) : ICreateInvoiceHandler
 {
-    public Invoice Handle(Invoice invoice)
+    public void Handle(Invoice invoice)
     {
         var statistics = repository.GetAll<Statistics>().FirstOrDefault();
 
@@ -24,7 +24,5 @@ public class CreateInvoiceHandler(IRepository repository) : ICreateInvoiceHandle
 
         invoice.Number = InvoiceNumberFormatter.Format(statistics.TotalInvoicesGenerated, invoice.Invoiced);
         repository.Add(invoice);
-
-        return invoice;
     }
 }

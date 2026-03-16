@@ -36,7 +36,7 @@ public partial class InvoiceDateViewModel : ObservableObject
 
         _createInvoiceHandler.Handle(newInvoice);
 
-        var filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, newInvoice.Number);
         _invoiceGenerator.GenerateInvoice(newInvoice, filePath);
 
         await Share.Default.RequestAsync(new ShareFileRequest

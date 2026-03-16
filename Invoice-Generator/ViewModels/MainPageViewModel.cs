@@ -26,7 +26,7 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     [RelayCommand]
     private async Task InvoiceChangedAsync()
     {
-        var filePath = Path.Combine(FileSystem.AppDataDirectory, "test.pdf");
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, SelectedInvoice.Number);
         invoiceGenerator.GenerateInvoice(SelectedInvoice.ToInvoice(), filePath);
 
         await Share.Default.RequestAsync(new ShareFileRequest
