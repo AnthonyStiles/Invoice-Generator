@@ -63,7 +63,7 @@
                         <Border Style="{StaticResource CardStyle}">
                             <Grid RowDefinitions="Auto, *"
                                   RowSpacing="12">
-                                <Label Text="{Binding Date, StringFormat='{0:D}'}" Style="{StaticResource BodyText}" />
+                                <Label Text="{Binding Date, StringFormat='{0:D}'}" />
                                 <CollectionView Grid.Row="1"
                                                 SelectionMode="None"
                                                 ItemsSource="{Binding Work}">
@@ -73,23 +73,20 @@
                                                 <SwipeView.RightItems>
                                                     <SwipeItems>
                                                         <SwipeItem Text="Delete"
-                                                                   BackgroundColor="{StaticResource Danger}"
                                                                    Command="{Binding BindingContext.DeleteWorkCommand, Source={x:Reference WorkEditView}}"
                                                                    CommandParameter="{Binding .}" />
                                                     </SwipeItems>
                                                 </SwipeView.RightItems>
                                                 <Grid ColumnDefinitions="*, Auto, Auto"
                                                       Padding="0,8">
-                                                    <Label Text="{Binding Description}" Style="{StaticResource BodyText}" VerticalOptions="Center" />
+                                                    <Label Text="{Binding Description}" VerticalOptions="Center" />
                                                     <Label Grid.Column="1"
                                                            Text="{Binding Hours, StringFormat='{0} hrs'}"
-                                                           Style="{StaticResource BodyText}"
                                                            VerticalOptions="Center"
                                                            Margin="10,0" />
                                                     <Label Grid.Column="2"
                                                            HorizontalTextAlignment="End"
                                                            Text="{Binding Amount, StringFormat='{0:C}'}"
-                                                           Style="{StaticResource BodyText}"
                                                            VerticalOptions="Center" />
                                                 </Grid>
                                             </SwipeView>

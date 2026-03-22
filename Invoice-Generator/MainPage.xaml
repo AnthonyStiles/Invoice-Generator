@@ -27,17 +27,16 @@
                             <SwipeView.RightItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Delete"
-                                               BackgroundColor="{StaticResource Danger}"
                                                Command="{Binding BindingContext.DeleteInvoiceCommand, Source={x:Reference InvoiceSelector}}"
                                                CommandParameter="{Binding .}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <Border Style="{StaticResource CardStyle}">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding AddressToName}" Style="{StaticResource BodyText}" />
-                                    <Label Text="{Binding AddressToLine1}" Style="{StaticResource BodyText}" />
-                                    <Label Text="{Binding Invoiced, StringFormat='{0:d}'}" Style="{StaticResource BodyText}" />
-                                    <Label Text="{Binding Total, StringFormat='{0:C}'}" Style="{StaticResource BodyText}" />
+                                    <Label Text="{Binding AddressToName}" />
+                                    <Label Text="{Binding AddressToLine1}" />
+                                    <Label Text="{Binding Invoiced, StringFormat='{0:d}'}" />
+                                    <Label Text="{Binding Total, StringFormat='{0:C}'}" />
                                 </VerticalStackLayout>
                             </Border>
                         </SwipeView>

@@ -33,17 +33,16 @@
                             <SwipeView.RightItems>
                                 <SwipeItems>
                                 <SwipeItem Text="Delete"
-                                           BackgroundColor="{StaticResource Danger}"
                                            Command="{Binding BindingContext.DeletePaymentDetailCommand, Source={x:Reference PaymentDetailSelectorView}}"
                                            CommandParameter="{Binding .}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <Border Style="{StaticResource CardStyle}">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding Bank}" Style="{StaticResource BodyText}" />
-                                    <Label Text="{Binding AccountHolder}" Style="{StaticResource BodyText}" />
-                                    <Label Text="{Binding SortCode}" Style="{StaticResource BodyText}" />
-                                    <Label Text="{Binding AccountNumber}" Style="{StaticResource BodyText}" />
+                                    <Label Text="{Binding Bank}" />
+                                    <Label Text="{Binding AccountHolder}" />
+                                    <Label Text="{Binding SortCode}" />
+                                    <Label Text="{Binding AccountNumber}" />
                                 </VerticalStackLayout>
                             </Border>
                         </SwipeView>

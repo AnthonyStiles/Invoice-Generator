@@ -27,16 +27,15 @@
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem Text="Delete"
-                                           BackgroundColor="{StaticResource Danger}"
                                            Command="{Binding BindingContext.DeleteAddressCommand, Source={x:Reference AddressSelector}}"
                                            CommandParameter="{Binding .}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <Border Style="{StaticResource CardStyle}">
                             <VerticalStackLayout>
-                                <Label Text="{Binding Name}" Style="{StaticResource BodyText}" />
-                                <Label Text="{Binding Line1}" Style="{StaticResource BodyText}" />
-                                <Label Text="{Binding PostCode}" Style="{StaticResource BodyText}" />
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding Line1}" />
+                                <Label Text="{Binding PostCode}" />
                             </VerticalStackLayout>
                         </Border>
                     </SwipeView>
