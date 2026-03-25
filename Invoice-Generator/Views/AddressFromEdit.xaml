@@ -5,11 +5,14 @@
              xmlns:local="clr-namespace:Invoice_Generator.ViewModels"
              x:Class="Invoice_Generator.Views.AddressFromEdit"
              x:DataType="local:AddressFromEditViewModel">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Done" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
     <Grid
         RowDefinitions="Auto, *"
         Padding="30"
         RowSpacing="30">
-        <Label Text="Enter the address details" />
+        <Label Text="Add details used for the from address." />
         <VerticalStackLayout Grid.Row="1" Spacing="20">
             <Entry x:Name="NameEntry" 
                    Placeholder="Name" 
@@ -50,7 +53,6 @@
                    MaxLength="11"
                    ReturnType="Done"
                    ReturnCommand="{Binding SaveCommand}" />
-            <Button Text="Save" Command="{Binding SaveCommand}" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

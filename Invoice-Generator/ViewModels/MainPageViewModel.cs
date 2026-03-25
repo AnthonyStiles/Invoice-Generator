@@ -45,8 +45,8 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
         InvoiceList = new ObservableCollection<InvoiceModel>(invoices.ToInvoiceModels());
 
         Instruction = invoices.Count > 0
-            ? "Select one of the previously created invoices generate it again."
-            : "Create an invoice for it to appear here.";
+            ? "Select an invoice to generate it again."
+            : "Create an invoice and it will be shown here.";
     }
 
     [RelayCommand]

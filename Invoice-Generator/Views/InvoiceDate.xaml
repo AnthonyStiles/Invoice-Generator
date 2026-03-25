@@ -6,7 +6,7 @@
              x:Class="Invoice_Generator.Views.InvoiceDate"
              x:DataType="local:InvoiceDateViewModel">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Finish"
+        <ToolbarItem Text="Generate"
                      IconImageSource=""
                      Command="{Binding FinishCommand}" />
     </ContentPage.ToolbarItems>
@@ -15,7 +15,7 @@
               Padding="30"
               RowSpacing="30">
 
-            <Label Text="When is the customer being invoiced?" />
+            <Label Text="When is the recipient being invoiced?" />
 
             <DatePicker Grid.Row="1"
                         MinimumDate="01/01/2000"

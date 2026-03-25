@@ -1,4 +1,5 @@
-﻿using Invoice_Generator.Application.Handlers;
+﻿using CommunityToolkit.Maui;
+using Invoice_Generator.Application.Handlers;
 using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Infrastructure;
 using Invoice_Generator.Infrastructure.Data;
@@ -14,6 +15,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

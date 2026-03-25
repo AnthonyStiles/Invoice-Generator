@@ -9,7 +9,7 @@
              Title=""
              x:Name="InvoiceSelector">
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="edit_square.png" Text="Create New" Command="{Binding OpenNewInvoiceCommand}" />
+        <ToolbarItem Text="Create New" Command="{Binding OpenNewInvoiceCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid Padding="30"
