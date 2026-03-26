@@ -6,7 +6,7 @@
              x:Class="Invoice_Generator.Views.AddressFromEdit"
              x:DataType="local:AddressFromEditViewModel">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Done" Command="{Binding SaveCommand}" />
+        <ToolbarItem IconImageSource="check" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
     <Grid
         RowDefinitions="Auto, *"

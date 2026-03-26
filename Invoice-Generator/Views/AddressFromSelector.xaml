@@ -8,7 +8,7 @@
              x:Name="AddressSelector"
              x:DataType="local:AddressFromSelectorViewModel">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add New" Command="{Binding AddNewDetailsCommand}" />
+        <ToolbarItem IconImageSource="add" Command="{Binding AddNewDetailsCommand}" />
     </ContentPage.ToolbarItems>
     <Grid
         RowDefinitions="Auto, *"
@@ -26,7 +26,7 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Delete"
+                                <SwipeItem IconImageSource="delete"
                                            Command="{Binding BindingContext.DeleteAddressCommand, Source={x:Reference AddressSelector}}"
                                            CommandParameter="{Binding .}" />
                             </SwipeItems>

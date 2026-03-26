@@ -6,8 +6,7 @@
              x:Class="Invoice_Generator.Views.InvoiceDate"
              x:DataType="local:InvoiceDateViewModel">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Generate"
-                     IconImageSource=""
+        <ToolbarItem IconImageSource="check"
                      Command="{Binding FinishCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

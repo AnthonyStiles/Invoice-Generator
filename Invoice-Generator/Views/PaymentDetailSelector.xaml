@@ -8,9 +8,8 @@
              x:DataType="local:PaymentDetailSelectorViewModel"
              x:Name="PaymentDetailSelectorView">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add New" Command="{Binding AddNewDetailsCommand}" />
+        <ToolbarItem IconImageSource="add" Command="{Binding AddNewDetailsCommand}" />
         <ToolbarItem Text="Skip"
-                     IconImageSource=""
                      Command="{Binding NavigateNextCommand }" />
     </ContentPage.ToolbarItems>
     <ContentView>
@@ -30,7 +29,7 @@
                         <SwipeView>
                             <SwipeView.RightItems>
                                 <SwipeItems>
-                                <SwipeItem Text="Delete"
+                                <SwipeItem IconImageSource="delete"
                                            Command="{Binding BindingContext.DeletePaymentDetailCommand, Source={x:Reference PaymentDetailSelectorView}}"
                                            CommandParameter="{Binding .}" />
                                 </SwipeItems>

@@ -9,8 +9,7 @@
              x:DataType="local:WorkEditViewModel"
              x:Name="WorkEditView">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Next"
-                     IconImageSource=""
+        <ToolbarItem IconImageSource="check"
                      Command="{Binding NavigateNextCommand }" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

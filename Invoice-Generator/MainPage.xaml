@@ -6,10 +6,9 @@
              xmlns:local="clr-namespace:Invoice_Generator.ViewModels"
              x:Class="Invoice_Generator.MainPage"
              x:DataType="local:MainPageViewModel"
-             Title=""
              x:Name="InvoiceSelector">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Create New" Command="{Binding OpenNewInvoiceCommand}" />
+        <ToolbarItem IconImageSource="add" Command="{Binding OpenNewInvoiceCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid Padding="30"
@@ -26,7 +25,7 @@
                         <SwipeView>
                             <SwipeView.RightItems>
                                 <SwipeItems>
-                                    <SwipeItem Text="Delete"
+                                    <SwipeItem IconImageSource="delete"
                                                Command="{Binding BindingContext.DeleteInvoiceCommand, Source={x:Reference InvoiceSelector}}"
                                                CommandParameter="{Binding .}" />
                                 </SwipeItems>
