@@ -21,8 +21,11 @@ internal static class WorkGroupHelper
             };
 
             if (workGroups.Count == 0 || workGroups.Last().Date < newWorkGroup.Date)
+            {
                 workGroups.Add(newWorkGroup);
+            }
             else
+            {
                 for (var i = 0; i < workGroups.Count; i++)
                 {
                     var group = workGroups[i];
@@ -32,6 +35,7 @@ internal static class WorkGroupHelper
                         break;
                     }
                 }
+            }
         }
     }
 }

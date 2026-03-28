@@ -54,6 +54,16 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         pdfDocumentRenderer.PdfDocument.Save(outputDirectory);
     }
 
+    private void ApplyStyle(Document document)
+    {
+        var style = document.Styles["Normal"];
+        if (style != null)
+        {
+            style.Font.Name = "Verdana";
+            style.Font.Size = 10;
+        }
+    }
+
     private static void GenerateAddressSection(Section section, Invoice invoice)
     {
         var addressTable = section.AddTable();
@@ -84,6 +94,37 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         var details = section.AddParagraph();
         details.AddText($"Invoice Number: {invoice.Number}\n");
         details.AddText($"Invoice Date: {invoice.Invoiced:d} \n");
+    }
+
+    private void GeneratePaymentDetailsSection(Section section, Invoice invoice)
+    {
+        var paymentDetailsTable = section.AddTable();
+        paymentDetailsTable.AddColumn("4cm");
+        paymentDetailsTable.AddColumn("4cm");
+
+        var row = paymentDetailsTable.AddRow();
+
+        var labels = row.Cells[0].AddParagraph();
+        labels.AddFormattedText("Payment Details:\n", TextFormat.Bold);
+        labels.AddText("Bank:\n");
+        labels.AddText("Account Holder:\n");
+        labels.AddText("Sort Code:\n");
+        labels.AddText("Account Number\n");
+
+        var values = row.Cells[1].AddParagraph();
+        values.AddText("\n");
+        values.AddText($"{invoice.Bank}\n");
+        values.AddText($"{invoice.AccountHolder}\n");
+        values.AddText($"{invoice.SortCode}\n");
+        values.AddText($"{invoice.AccountNumber}\n");
+    }
+
+    private void GenerateTotalSection(Section section, Invoice invoice)
+    {
+        var totals = section.AddParagraph();
+        totals.AddText($"Total to be paid: {invoice.Total:C}");
+        totals.Format.Font.Bold = true;
+        totals.Format.Font.Size = 16;
     }
 
     private void GenerateWorkSection(Section section, Invoice invoice)
@@ -167,46 +208,5 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
         totalValueColumn.Borders.Top.Color = Colors.LightGray;
 
         totalValueColumn.AddParagraph(invoice.Total.ToString("C")).Format.Font.Bold = true;
-    }
-
-    private void GenerateTotalSection(Section section, Invoice invoice)
-    {
-        var totals = section.AddParagraph();
-        totals.AddText($"Total to be paid: {invoice.Total:C}");
-        totals.Format.Font.Bold = true;
-        totals.Format.Font.Size = 16;
-    }
-
-    private void GeneratePaymentDetailsSection(Section section, Invoice invoice)
-    {
-        var paymentDetailsTable = section.AddTable();
-        paymentDetailsTable.AddColumn("4cm");
-        paymentDetailsTable.AddColumn("4cm");
-
-        var row = paymentDetailsTable.AddRow();
-
-        var labels = row.Cells[0].AddParagraph();
-        labels.AddFormattedText("Payment Details:\n", TextFormat.Bold);
-        labels.AddText("Bank:\n");
-        labels.AddText("Account Holder:\n");
-        labels.AddText("Sort Code:\n");
-        labels.AddText("Account Number\n");
-
-        var values = row.Cells[1].AddParagraph();
-        values.AddText("\n");
-        values.AddText($"{invoice.Bank}\n");
-        values.AddText($"{invoice.AccountHolder}\n");
-        values.AddText($"{invoice.SortCode}\n");
-        values.AddText($"{invoice.AccountNumber}\n");
-    }
-
-    private void ApplyStyle(Document document)
-    {
-        var style = document.Styles["Normal"];
-        if (style != null)
-        {
-            style.Font.Name = "Verdana";
-            style.Font.Size = 10;
-        }
     }
 }

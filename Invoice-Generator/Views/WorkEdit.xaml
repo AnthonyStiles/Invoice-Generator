@@ -95,9 +95,10 @@
                                                              CommandParameter="{Binding .}"
                                                              HeightRequest="24"
                                                              WidthRequest="24"
-                                                             VerticalOptions="Center" >
+                                                             VerticalOptions="Center">
                                                     <ImageButton.Behaviors>
-                                                        <toolkit:IconTintColorBehavior TintColor="{AppThemeBinding Light={StaticResource Red}, Dark={StaticResource LightRed}}"/>
+                                                        <toolkit:IconTintColorBehavior
+                                                            TintColor="{AppThemeBinding Light={StaticResource Red}, Dark={StaticResource LightRed}}" />
                                                     </ImageButton.Behaviors>
                                                 </ImageButton>
                                             </Grid>

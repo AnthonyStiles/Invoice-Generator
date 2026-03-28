@@ -18,9 +18,14 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     [ObservableProperty] private InvoiceModel selectedInvoice;
 
     [RelayCommand]
-    private async Task OpenNewInvoiceAsync()
+    private void DeleteInvoice(InvoiceModel deletedInvoice)
     {
-        await Shell.Current.GoToAsync(nameof(AddressFromSelector));
+        if (InvoiceList.Contains(deletedInvoice))
+        {
+            var entity = repository.GetByID<Invoice>(deletedInvoice.Id);
+            if (entity != null) repository.Delete(entity);
+            PageLoad();
+        }
     }
 
     [RelayCommand]
@@ -39,6 +44,12 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     }
 
     [RelayCommand]
+    private async Task OpenNewInvoiceAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(AddressFromSelector));
+    }
+
+    [RelayCommand]
     private void PageLoad()
     {
         var invoices = repository.GetAll<Invoice>();
@@ -47,16 +58,5 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
         Instruction = invoices.Count > 0
             ? "Select an invoice to generate it again."
             : "Create an invoice and it will be shown here.";
-    }
-
-    [RelayCommand]
-    private void DeleteInvoice(InvoiceModel deletedInvoice)
-    {
-        if (InvoiceList.Contains(deletedInvoice))
-        {
-            var entity = repository.GetByID<Invoice>(deletedInvoice.Id);
-            if (entity != null) repository.Delete(entity);
-            PageLoad();
-        }
     }
 }

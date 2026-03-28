@@ -15,14 +15,14 @@
         RowSpacing="30">
         <Label Text="Add details used for the payment details." />
         <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Entry x:Name="NameEntry" 
-                   Placeholder="Bank Name" 
+            <Entry x:Name="NameEntry"
+                   Placeholder="Bank Name"
                    Text="{Binding PaymentDetail.Bank}"
                    MaxLength="50"
                    ReturnType="Next"
                    ReturnCommand="{Binding Source={x:Reference AccountHolderEntry}, Path=Focus}"
                    Loaded="OnEntryLoaded" />
-            <Entry x:Name="AccountHolderEntry" 
+            <Entry x:Name="AccountHolderEntry"
                    Placeholder="Account Holder"
                    Text="{Binding PaymentDetail.AccountHolder}"
                    MaxLength="50"
@@ -34,12 +34,12 @@
                    Text="{Binding PaymentDetail.SortCode}"
                    MaxLength="8"
                    ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}" >
-                   <Entry.Behaviors>
-                          <behaviours:SortCodeMaskBehaviour />
-                   </Entry.Behaviors>
+                   ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}">
+                <Entry.Behaviors>
+                    <behaviours:SortCodeMaskBehaviour />
+                </Entry.Behaviors>
             </Entry>
-            <Entry x:Name="AccountNumberEntry" 
+            <Entry x:Name="AccountNumberEntry"
                    Placeholder="Account Number"
                    Keyboard="Numeric"
                    Text="{Binding PaymentDetail.AccountNumber}"

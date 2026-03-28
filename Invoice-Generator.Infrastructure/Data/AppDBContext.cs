@@ -11,6 +11,13 @@ public class AppDBContext : DbContext
     {
     }
 
+    public DbSet<AddressFrom> FromAddresses { get; set; }
+    public DbSet<Invoice> Invoices { get; set; }
+    public DbSet<PaymentDetail> PaymentDetails { get; set; }
+    public DbSet<Statistics> Statistics { get; set; }
+    public DbSet<AddressTo> ToAddresses { get; set; }
+    public DbSet<Work> Work { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         AddressFromPropertySettings.Configure(modelBuilder);
@@ -19,11 +26,4 @@ public class AppDBContext : DbContext
         PaymentDetailPropertySettings.Configure(modelBuilder);
         InvoicePropertySettings.Configure(modelBuilder);
     }
-
-    public DbSet<AddressFrom> FromAddresses { get; set; }
-    public DbSet<AddressTo> ToAddresses { get; set; }
-    public DbSet<Work> Work { get; set; }
-    public DbSet<Invoice> Invoices { get; set; }
-    public DbSet<Statistics> Statistics { get; set; }
-    public DbSet<PaymentDetail> PaymentDetails { get; set; }
 }

@@ -10,23 +10,23 @@ public static class AddressFromPropertySettings
         modelBuilder.Entity<AddressFrom>()
             .Property(addressFrom => addressFrom.Name)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressFrom>()
             .Property(addressFrom => addressFrom.Line1)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressFrom>()
             .Property(addressFrom => addressFrom.Line2)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressFrom>()
             .Property(addressFrom => addressFrom.PostCode)
             .HasMaxLength(8);
-        
+
         modelBuilder.Entity<AddressFrom>()
             .Property(addressFrom => addressFrom.Email)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressFrom>()
             .Property(addressFrom => addressFrom.Phone)
             .HasMaxLength(11);

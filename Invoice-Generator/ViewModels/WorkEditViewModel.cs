@@ -38,6 +38,19 @@ public partial class WorkEditViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void DeleteWork(WorkModel deletedWork)
+    {
+        var workGroup = Invoice.Work.FirstOrDefault(workItem => deletedWork.Completed.Date == workItem.Date.Date);
+
+        if (workGroup != null)
+        {
+            workGroup.Work.Remove(deletedWork);
+
+            if (workGroup.Work.Count == 0) Invoice.Work.Remove(workGroup);
+        }
+    }
+
+    [RelayCommand]
     private async Task NavigateNextAsync()
     {
         if (Invoice.Work.Count > 0)
@@ -48,19 +61,6 @@ public partial class WorkEditViewModel : ObservableObject
             };
 
             await Shell.Current.GoToAsync(nameof(PaymentDetailSelector), data);
-        }
-    }
-
-    [RelayCommand]
-    private void DeleteWork(WorkModel deletedWork)
-    {
-        var workGroup = Invoice.Work.FirstOrDefault(workItem => deletedWork.Completed.Date == workItem.Date.Date);
-
-        if (workGroup != null)
-        {
-            workGroup.Work.Remove(deletedWork);
-
-            if (workGroup.Work.Count == 0) Invoice.Work.Remove(workGroup);
         }
     }
 }

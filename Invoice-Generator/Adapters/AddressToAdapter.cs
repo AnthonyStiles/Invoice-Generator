@@ -5,9 +5,16 @@ namespace Invoice_Generator.Adapters;
 
 internal static class AddressToAdapter
 {
-    internal static List<AddressToModel> ToAddressToModels(this List<AddressTo> addresses)
+    internal static AddressTo ToAddressTo(this AddressToModel address)
     {
-        return addresses.ConvertAll(address => address.ToAddressToModel());
+        return new AddressTo
+        {
+            Id = address.Id,
+            Line1 = address.Line1,
+            Line2 = address.Line2,
+            Name = address.Name,
+            PostCode = address.PostCode
+        };
     }
 
     private static AddressToModel ToAddressToModel(this AddressTo address)
@@ -22,15 +29,8 @@ internal static class AddressToAdapter
         };
     }
 
-    internal static AddressTo ToAddressTo(this AddressToModel address)
+    internal static List<AddressToModel> ToAddressToModels(this List<AddressTo> addresses)
     {
-        return new AddressTo
-        {
-            Id = address.Id,
-            Line1 = address.Line1,
-            Line2 = address.Line2,
-            Name = address.Name,
-            PostCode = address.PostCode
-        };
+        return addresses.ConvertAll(address => address.ToAddressToModel());
     }
 }

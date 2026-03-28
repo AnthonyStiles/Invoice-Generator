@@ -10,15 +10,15 @@ public static class AddressToPropertySettings
         modelBuilder.Entity<AddressTo>()
             .Property(addressTo => addressTo.Name)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressTo>()
             .Property(addressTo => addressTo.Line1)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressTo>()
             .Property(addressTo => addressTo.Line2)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<AddressTo>()
             .Property(addressTo => addressTo.PostCode)
             .HasMaxLength(8);

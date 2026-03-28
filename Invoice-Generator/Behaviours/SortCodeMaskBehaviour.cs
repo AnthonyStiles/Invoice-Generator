@@ -15,17 +15,17 @@ public class SortCodeMaskBehaviour : Behavior<Entry>
         entry.TextChanged -= OnEntryTextChanged;
         base.OnDetachingFrom(entry);
     }
-    
+
     private void OnEntryTextChanged(object sender, TextChangedEventArgs e)
     {
         var entry = (Entry)sender;
         var sortCode = e.NewTextValue;
-        
+
         if (string.IsNullOrEmpty(sortCode))
         {
             return;
         }
-        
+
         sortCode = Regex.Replace(e.NewTextValue, @"[^\d]", "");
 
         if (sortCode.Length > 6)

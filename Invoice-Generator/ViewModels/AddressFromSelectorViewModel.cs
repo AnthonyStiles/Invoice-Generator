@@ -21,6 +21,25 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
     [ObservableProperty] private AddressFromModel? selectedAddress;
 
     [RelayCommand]
+    private void DeleteAddress(AddressFromModel deletedAddress)
+    {
+        if (Addresses.Contains(deletedAddress))
+        {
+            var entity = repository.GetByID<AddressFrom>(deletedAddress.Id);
+            if (entity != null) repository.Delete(entity);
+            LoadAddresses();
+        }
+    }
+
+    [RelayCommand]
+    private void LoadAddresses()
+    {
+        Addresses.Clear();
+        var data = repository.GetAll<AddressFrom>().ToAddressFromModels();
+        Addresses = new ObservableCollection<AddressFromModel>(data);
+    }
+
+    [RelayCommand]
     private async Task OnAddNewDetailsAsync()
     {
         await Shell.Current.GoToAsync(nameof(AddressFromEdit));
@@ -47,25 +66,6 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
             SelectedAddress = null;
 
             await Shell.Current.GoToAsync(nameof(AddressToSelector), data);
-        }
-    }
-
-    [RelayCommand]
-    private void LoadAddresses()
-    {
-        Addresses.Clear();
-        var data = repository.GetAll<AddressFrom>().ToAddressFromModels();
-        Addresses = new ObservableCollection<AddressFromModel>(data);
-    }
-
-    [RelayCommand]
-    private void DeleteAddress(AddressFromModel deletedAddress)
-    {
-        if (Addresses.Contains(deletedAddress))
-        {
-            var entity = repository.GetByID<AddressFrom>(deletedAddress.Id);
-            if (entity != null) repository.Delete(entity);
-            LoadAddresses();
         }
     }
 }

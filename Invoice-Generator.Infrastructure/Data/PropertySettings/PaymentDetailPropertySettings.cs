@@ -10,15 +10,15 @@ public static class PaymentDetailPropertySettings
         modelBuilder.Entity<PaymentDetail>()
             .Property(paymentDetail => paymentDetail.Bank)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<PaymentDetail>()
             .Property(paymentDetail => paymentDetail.AccountHolder)
             .HasMaxLength(50);
-        
+
         modelBuilder.Entity<PaymentDetail>()
             .Property(paymentDetail => paymentDetail.SortCode)
             .HasMaxLength(8);
-        
+
         modelBuilder.Entity<PaymentDetail>()
             .Property(paymentDetail => paymentDetail.AccountNumber)
             .HasMaxLength(8);

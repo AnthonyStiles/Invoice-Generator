@@ -19,6 +19,36 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
     [ObservableProperty] public PaymentDetailModel? selectedPaymentDetail;
 
     [RelayCommand]
+    private void DeletePaymentDetail(PaymentDetailModel paymentDetail)
+    {
+        if (PaymentDetails.Contains(paymentDetail))
+        {
+            var entity = repository.GetByID<PaymentDetail>(paymentDetail.Id);
+            repository.Delete<PaymentDetail>(entity);
+            LoadPaymentDetails();
+        }
+    }
+
+    [RelayCommand]
+    private void LoadPaymentDetails()
+    {
+        PaymentDetails.Clear();
+        var data = repository.GetAll<PaymentDetail>().ToPaymentDetailModels();
+        PaymentDetails = new ObservableCollection<PaymentDetailModel>(data);
+    }
+
+    [RelayCommand]
+    private async Task NavigateNextAsync()
+    {
+        Dictionary<string, object> data = new()
+        {
+            { "Invoice", Invoice }
+        };
+
+        await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
+    }
+
+    [RelayCommand]
     private async Task OnAddNewDetailsAsync()
     {
         await Shell.Current.GoToAsync(nameof(PaymentDetailEdit));
@@ -43,35 +73,5 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
 
             await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
         }
-    }
-
-    [RelayCommand]
-    private void LoadPaymentDetails()
-    {
-        PaymentDetails.Clear();
-        var data = repository.GetAll<PaymentDetail>().ToPaymentDetailModels();
-        PaymentDetails = new ObservableCollection<PaymentDetailModel>(data);
-    }
-
-    [RelayCommand]
-    private void DeletePaymentDetail(PaymentDetailModel paymentDetail)
-    {
-        if (PaymentDetails.Contains(paymentDetail))
-        {
-            var entity = repository.GetByID<PaymentDetail>(paymentDetail.Id);
-            repository.Delete<PaymentDetail>(entity);
-            LoadPaymentDetails();
-        }
-    }
-
-    [RelayCommand]
-    private async Task NavigateNextAsync()
-    {
-        Dictionary<string, object> data = new()
-        {
-            { "Invoice", Invoice }
-        };
-
-        await Shell.Current.GoToAsync(nameof(InvoiceDate), data);
     }
 }

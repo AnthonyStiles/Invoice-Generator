@@ -29,9 +29,9 @@
                         <SwipeView>
                             <SwipeView.RightItems>
                                 <SwipeItems>
-                                <SwipeItem IconImageSource="delete"
-                                           Command="{Binding BindingContext.DeletePaymentDetailCommand, Source={x:Reference PaymentDetailSelectorView}}"
-                                           CommandParameter="{Binding .}" />
+                                    <SwipeItem IconImageSource="delete"
+                                               Command="{Binding BindingContext.DeletePaymentDetailCommand, Source={x:Reference PaymentDetailSelectorView}}"
+                                               CommandParameter="{Binding .}" />
                                 </SwipeItems>
                             </SwipeView.RightItems>
                             <Border Style="{StaticResource CardStyle}">

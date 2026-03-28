@@ -10,11 +10,6 @@ internal static class WorkAdapter
         return workModels.ConvertAll(workModel => workModel.ToWork());
     }
 
-    internal static List<WorkModel> ToWorkModels(this List<Work> work)
-    {
-        return work.ConvertAll(item => item.ToWorkModel());
-    }
-
     internal static Work ToWork(this WorkModel workModel)
     {
         return new Work
@@ -37,5 +32,10 @@ internal static class WorkAdapter
             Amount = work.Amount,
             Hours = work.Hours
         };
+    }
+
+    internal static List<WorkModel> ToWorkModels(this List<Work> work)
+    {
+        return work.ConvertAll(item => item.ToWorkModel());
     }
 }
