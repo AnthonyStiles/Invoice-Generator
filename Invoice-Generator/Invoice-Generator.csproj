@@ -82,6 +82,9 @@
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' "/>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <CodesignKey>iPhone Developer</CodesignKey>
+      <CodesignProvision>iOS Team Provisioning Profile: com.anthonyStiles.invoicegenerator.generator</CodesignProvision>
+    </PropertyGroup>
 
 </Project>

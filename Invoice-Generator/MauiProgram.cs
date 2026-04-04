@@ -25,8 +25,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // var dbPassword = SecureKeyRetriever.GetKeyAsync("db_key").GetAwaiter().GetResult();
-        builder.Services.AddDbContext(FileSystem.AppDataDirectory, "password");
+        var dbPassword = SecureKeyRetriever.GetKeyAsync("db_key").GetAwaiter().GetResult();
+        builder.Services.AddDbContext(FileSystem.AppDataDirectory, dbPassword);
         builder.Services.AddTransient<IRepository, EntityFrameworkRepository>();
         builder.Services.AddTransient<IInvoiceGenerator, MigraDocInvoiceGenerator>();
         builder.Services.AddTransient<ICreateInvoiceHandler, CreateInvoiceHandler>();
