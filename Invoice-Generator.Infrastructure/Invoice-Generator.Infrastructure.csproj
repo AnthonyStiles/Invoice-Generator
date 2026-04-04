@@ -8,16 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="10.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.5">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="PDFsharp-MigraDoc" Version="6.2.4"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Data/"/>
+        <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.11" />
     </ItemGroup>
 
     <ItemGroup>

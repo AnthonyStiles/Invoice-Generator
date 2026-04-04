@@ -7,9 +7,9 @@ namespace Invoice_Generator.Infrastructure;
 public static class StartupSetup
 {
     //Might not even need this
-    public static void AddDbContext(this IServiceCollection services, string path)
+    public static void AddDbContext(this IServiceCollection services, string path, string password)
     {
         services.AddDbContext<AppDBContext>(options =>
-            options.UseSqlite($"Data Source={Path.Combine(path, "data.db")}"));
+            options.UseSqlite($"Data Source={Path.Combine(path, "data.db")};Password={password};"));
     }
 }

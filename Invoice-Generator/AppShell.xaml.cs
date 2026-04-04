@@ -16,6 +16,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(InvoiceDate), typeof(InvoiceDate));
         Routing.RegisterRoute(nameof(PaymentDetailSelector), typeof(PaymentDetailSelector));
         Routing.RegisterRoute(nameof(PaymentDetailEdit), typeof(PaymentDetailEdit));
+        Routing.RegisterRoute(nameof(Settings), typeof(Settings));
         Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
     }
 }

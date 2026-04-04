@@ -8,6 +8,7 @@
              x:DataType="local:MainPageViewModel"
              x:Name="InvoiceSelector">
     <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="cog" Command="{Binding OpenSettingsCommand}" />
         <ToolbarItem IconImageSource="add" Command="{Binding OpenNewInvoiceCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

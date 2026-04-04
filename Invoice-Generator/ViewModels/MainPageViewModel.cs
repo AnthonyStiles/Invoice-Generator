@@ -50,6 +50,12 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     }
 
     [RelayCommand]
+    private async Task OpenSettingsAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(Settings));
+    }
+
+    [RelayCommand]
     private void PageLoad()
     {
         var invoices = repository.GetAll<Invoice>();

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Invoice_Generator.Application.Handlers;
 using Invoice_Generator.Application.Interfaces;
+using Invoice_Generator.Helpers;
 using Invoice_Generator.Infrastructure;
 using Invoice_Generator.Infrastructure.Data;
 using Invoice_Generator.Infrastructure.InvoiceGeneration;
@@ -12,6 +13,8 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
+        DatabaseInitialiser.Initialise();
+        
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
@@ -22,7 +25,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddDbContext(FileSystem.AppDataDirectory);
+        // var dbPassword = SecureKeyRetriever.GetKeyAsync("db_key").GetAwaiter().GetResult();
+        builder.Services.AddDbContext(FileSystem.AppDataDirectory, "password");
         builder.Services.AddTransient<IRepository, EntityFrameworkRepository>();
         builder.Services.AddTransient<IInvoiceGenerator, MigraDocInvoiceGenerator>();
         builder.Services.AddTransient<ICreateInvoiceHandler, CreateInvoiceHandler>();
