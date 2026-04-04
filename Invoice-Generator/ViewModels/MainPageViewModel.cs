@@ -3,9 +3,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Adapters;
 using Invoice_Generator.Application.Interfaces;
-using Invoice_Generator.Domain.Entities;
 using Invoice_Generator.Models;
-using Invoice_Generator.Views;
+using Invoice_Generator.Views.Invoice;
 
 namespace Invoice_Generator.ViewModels;
 
@@ -22,7 +21,7 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     {
         if (InvoiceList.Contains(deletedInvoice))
         {
-            var entity = repository.GetByID<Invoice>(deletedInvoice.Id);
+            var entity = repository.GetByID<Domain.Entities.Invoice>(deletedInvoice.Id);
             if (entity != null) repository.Delete(entity);
             PageLoad();
         }
@@ -58,7 +57,7 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     [RelayCommand]
     private void PageLoad()
     {
-        var invoices = repository.GetAll<Invoice>();
+        var invoices = repository.GetAll<Domain.Entities.Invoice>();
         InvoiceList = new ObservableCollection<InvoiceModel>(invoices.ToInvoiceModels());
 
         Instruction = invoices.Count > 0

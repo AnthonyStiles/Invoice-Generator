@@ -69,15 +69,6 @@
         <ProjectReference Include="../Invoice-Generator.Infrastructure/Invoice-Generator.Infrastructure.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Compile Update="Views/AddressFromEdit.xaml.cs">
-            <DependentUpon>AddressFromEdit.xaml</DependentUpon>
-        </Compile>
-        <Compile Update="Views/AddressFromSelector.xaml.cs">
-            <DependentUpon>AddressFromSelector.xaml</DependentUpon>
-        </Compile>
-    </ItemGroup>
-
     <PropertyGroup>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     </PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using Invoice_Generator.Views;
+﻿using Invoice_Generator.Views.Invoice;
+using Invoice_Generator.Views.Settings;
 
 namespace Invoice_Generator;
 
