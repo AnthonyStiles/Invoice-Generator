@@ -2,18 +2,18 @@ using Invoice_Generator.ViewModels;
 
 namespace Invoice_Generator.Views;
 
-public partial class Settings : ContentPage
+public partial class PrivacyPolicy : ContentPage
 {
-	public Settings()
+	public PrivacyPolicy()
 	{
 		InitializeComponent();
-		BindingContext = new SettingsViewModel();
+		BindingContext = new PrivacyPolicyViewModel();
 	}
 	
 	protected override void OnAppearing()
 	{
 		base.OnAppearing();
-		if (BindingContext is SettingsViewModel viewModel)
+		if (BindingContext is PrivacyPolicyViewModel viewModel)
 		{
 			viewModel.LoadHtmlCommand.Execute(null);
 		}
