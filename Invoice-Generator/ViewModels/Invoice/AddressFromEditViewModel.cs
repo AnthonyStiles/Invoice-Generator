@@ -10,7 +10,8 @@ public partial class AddressFromEditViewModel : ObservableObject
 {
     private readonly IRepository _repository;
 
-    [ObservableProperty] public AddressFromModel address;
+    [ObservableProperty]
+    public AddressFromModel address;
 
     public AddressFromEditViewModel(IRepository repository)
     {

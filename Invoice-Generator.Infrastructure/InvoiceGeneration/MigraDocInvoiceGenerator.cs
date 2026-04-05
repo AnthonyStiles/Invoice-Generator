@@ -12,7 +12,10 @@ public class MigraDocInvoiceGenerator : IInvoiceGenerator
 {
     public void GenerateInvoice(Invoice invoice, string outputDirectory)
     {
-        if (Capabilities.Build.IsCoreBuild) GlobalFontSettings.FontResolver = new FailsafeFontResolver();
+        if (Capabilities.Build.IsCoreBuild)
+        {
+            GlobalFontSettings.FontResolver = new FailsafeFontResolver();
+        }
 
         var document = new Document
         {

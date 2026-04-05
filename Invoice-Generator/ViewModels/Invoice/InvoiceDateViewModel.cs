@@ -14,9 +14,11 @@ public partial class InvoiceDateViewModel : ObservableObject
     private readonly IInvoiceGenerator _invoiceGenerator;
     private readonly IRepository _repository;
 
-    [ObservableProperty] private InvoiceModel invoice;
+    [ObservableProperty]
+    private InvoiceModel invoice;
 
-    [ObservableProperty] private DateTime invoiceDate;
+    [ObservableProperty]
+    private DateTime invoiceDate;
 
     public InvoiceDateViewModel(IRepository repository, IInvoiceGenerator invoiceGenerator,
         ICreateInvoiceHandler createInvoiceHandler)

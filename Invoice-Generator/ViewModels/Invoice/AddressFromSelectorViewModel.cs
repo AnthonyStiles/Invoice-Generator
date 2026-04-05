@@ -6,7 +6,6 @@ using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views.Invoice;
-using Invoice_Generator.Views.Settings;
 
 namespace Invoice_Generator.ViewModels.Invoice;
 
@@ -15,11 +14,14 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
 {
     private AddressFromModel? address;
 
-    [ObservableProperty] private ObservableCollection<AddressFromModel> addresses = [];
+    [ObservableProperty]
+    private ObservableCollection<AddressFromModel> addresses = [];
 
-    [ObservableProperty] public InvoiceModel invoice;
+    [ObservableProperty]
+    public InvoiceModel invoice;
 
-    [ObservableProperty] private AddressFromModel? selectedAddress;
+    [ObservableProperty]
+    private AddressFromModel? selectedAddress;
 
     [RelayCommand]
     private void DeleteAddress(AddressFromModel deletedAddress)
@@ -27,7 +29,11 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
         if (Addresses.Contains(deletedAddress))
         {
             var entity = repository.GetByID<AddressFrom>(deletedAddress.Id);
-            if (entity != null) repository.Delete(entity);
+            if (entity != null)
+            {
+                repository.Delete(entity);
+            }
+
             LoadAddresses();
         }
     }

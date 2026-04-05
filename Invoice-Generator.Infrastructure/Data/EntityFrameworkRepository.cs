@@ -24,9 +24,11 @@ public class EntityFrameworkRepository(AppDBContext appDBContext) : IRepository
     public List<T> GetAll<T>() where T : BaseEntity
     {
         if (typeof(T) == typeof(Invoice))
+        {
             return _appDBContext.Set<Invoice>()
                 .Include(invoice => invoice.Work)
                 .ToList() as List<T>;
+        }
 
         return _appDBContext.Set<T>().ToList();
     }

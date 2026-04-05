@@ -15,6 +15,8 @@ public partial class PaymentDetailSelector : ContentPage
     {
         base.OnAppearing();
         if (BindingContext is PaymentDetailSelectorViewModel viewModel)
+        {
             viewModel.LoadPaymentDetailsCommand.Execute(null);
+        }
     }
 }

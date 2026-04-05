@@ -6,18 +6,20 @@ using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views.Invoice;
-using Invoice_Generator.Views.Settings;
 
 namespace Invoice_Generator.ViewModels.Invoice;
 
 [QueryProperty("Invoice", "Invoice")]
 public partial class PaymentDetailSelectorViewModel(IRepository repository) : ObservableObject
 {
-    [ObservableProperty] public InvoiceModel invoice;
+    [ObservableProperty]
+    public InvoiceModel invoice;
 
-    [ObservableProperty] public ObservableCollection<PaymentDetailModel> paymentDetails = [];
+    [ObservableProperty]
+    public ObservableCollection<PaymentDetailModel> paymentDetails = [];
 
-    [ObservableProperty] public PaymentDetailModel? selectedPaymentDetail;
+    [ObservableProperty]
+    public PaymentDetailModel? selectedPaymentDetail;
 
     [RelayCommand]
     private void DeletePaymentDetail(PaymentDetailModel paymentDetail)

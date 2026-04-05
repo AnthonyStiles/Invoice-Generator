@@ -14,7 +14,7 @@ public static class MauiProgram
     public static MauiApp CreateMauiApp()
     {
         DatabaseInitialiser.Initialise();
-        
+
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()

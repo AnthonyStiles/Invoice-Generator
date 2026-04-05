@@ -11,7 +11,7 @@ public static class SecureKeyRetriever
             key = Guid.NewGuid().ToString();
             await SecureStorage.Default.SetAsync(name, key);
         }
-        
+
         return key;
     }
 }

@@ -26,7 +26,10 @@ internal static class WorkGroupAdapter
     {
         ObservableCollection<WorkGroupModel> workGroups = [];
 
-        foreach (var workItem in work) WorkGroupHelper.GroupWorkItem(workGroups, workItem.ToWorkModel());
+        foreach (var workItem in work)
+        {
+            WorkGroupHelper.GroupWorkItem(workGroups, workItem.ToWorkModel());
+        }
 
         return workGroups;
     }

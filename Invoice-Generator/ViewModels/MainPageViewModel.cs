@@ -10,11 +10,14 @@ namespace Invoice_Generator.ViewModels;
 
 public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator invoiceGenerator) : ObservableObject
 {
-    [ObservableProperty] private string instruction;
+    [ObservableProperty]
+    private string instruction;
 
-    [ObservableProperty] private ObservableCollection<InvoiceModel> invoiceList;
+    [ObservableProperty]
+    private ObservableCollection<InvoiceModel> invoiceList;
 
-    [ObservableProperty] private InvoiceModel selectedInvoice;
+    [ObservableProperty]
+    private InvoiceModel selectedInvoice;
 
     [RelayCommand]
     private void DeleteInvoice(InvoiceModel deletedInvoice)
@@ -22,7 +25,11 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
         if (InvoiceList.Contains(deletedInvoice))
         {
             var entity = repository.GetByID<Domain.Entities.Invoice>(deletedInvoice.Id);
-            if (entity != null) repository.Delete(entity);
+            if (entity != null)
+            {
+                repository.Delete(entity);
+            }
+
             PageLoad();
         }
     }

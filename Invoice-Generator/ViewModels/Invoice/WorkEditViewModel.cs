@@ -3,16 +3,17 @@ using CommunityToolkit.Mvvm.Input;
 using Invoice_Generator.Helpers;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views.Invoice;
-using Invoice_Generator.Views.Settings;
 
 namespace Invoice_Generator.ViewModels.Invoice;
 
 [QueryProperty("Invoice", "Invoice")]
 public partial class WorkEditViewModel : ObservableObject
 {
-    [ObservableProperty] public InvoiceModel invoice;
+    [ObservableProperty]
+    public InvoiceModel invoice;
 
-    [ObservableProperty] private WorkModel work;
+    [ObservableProperty]
+    private WorkModel work;
 
     public WorkEditViewModel()
     {
@@ -47,7 +48,10 @@ public partial class WorkEditViewModel : ObservableObject
         {
             workGroup.Work.Remove(deletedWork);
 
-            if (workGroup.Work.Count == 0) Invoice.Work.Remove(workGroup);
+            if (workGroup.Work.Count == 0)
+            {
+                Invoice.Work.Remove(workGroup);
+            }
         }
     }
 

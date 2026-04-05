@@ -14,6 +14,9 @@ public partial class MainPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        if (BindingContext is MainPageViewModel viewModel) viewModel.PageLoadCommand.Execute(null);
+        if (BindingContext is MainPageViewModel viewModel)
+        {
+            viewModel.PageLoadCommand.Execute(null);
+        }
     }
 }

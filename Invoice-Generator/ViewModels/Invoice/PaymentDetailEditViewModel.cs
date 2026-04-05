@@ -10,7 +10,8 @@ public partial class PaymentDetailEditViewModel : ObservableObject
 {
     private readonly IRepository _repository;
 
-    [ObservableProperty] private PaymentDetailModel paymentDetail;
+    [ObservableProperty]
+    private PaymentDetailModel paymentDetail;
 
     public PaymentDetailEditViewModel(IRepository repository)
     {

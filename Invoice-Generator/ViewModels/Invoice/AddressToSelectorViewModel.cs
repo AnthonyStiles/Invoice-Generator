@@ -6,18 +6,20 @@ using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain.Entities;
 using Invoice_Generator.Models;
 using Invoice_Generator.Views.Invoice;
-using Invoice_Generator.Views.Settings;
 
 namespace Invoice_Generator.ViewModels.Invoice;
 
 [QueryProperty("Invoice", "Invoice")]
 public partial class AddressToSelectorViewModel(IRepository repository) : ObservableObject
 {
-    [ObservableProperty] public ObservableCollection<AddressToModel> addresses = [];
+    [ObservableProperty]
+    public ObservableCollection<AddressToModel> addresses = [];
 
-    [ObservableProperty] public InvoiceModel invoice;
+    [ObservableProperty]
+    public InvoiceModel invoice;
 
-    [ObservableProperty] public AddressToModel? selectedAddress;
+    [ObservableProperty]
+    public AddressToModel? selectedAddress;
 
     [RelayCommand]
     private void DeleteAddress(AddressToModel address)
