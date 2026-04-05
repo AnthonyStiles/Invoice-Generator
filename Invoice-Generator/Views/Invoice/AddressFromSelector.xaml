@@ -11,10 +11,10 @@
         <ToolbarItem IconImageSource="add" Command="{Binding AddNewDetailsCommand}" />
     </ContentPage.ToolbarItems>
     <Grid
-        RowDefinitions="Auto, *"
         Padding="30"
+        RowDefinitions="Auto, Auto"
         RowSpacing="30">
-        <Label Text="Who is the invoice from?" />
+        <Label Text="{Binding Instruction}" />
         <CollectionView x:Name="AddressList"
                         ItemsSource="{Binding Addresses}"
                         SelectionMode="Single"

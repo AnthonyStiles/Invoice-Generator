@@ -8,37 +8,35 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="check" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
-    <Grid
-        RowDefinitions="Auto, *"
-        Padding="30"
-        RowSpacing="30">
-        <Label Text="Add details used for the recipient." />
-        <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Entry x:Name="NameEntry"
-                   Placeholder="Name"
-                   Text="{Binding Address.Name}"
-                   MaxLength="50"
-                   ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference Line1Entry}, Path=Focus}"
-                   Loaded="OnEntryLoaded" />
-            <Entry x:Name="Line1Entry"
-                   Placeholder="Line 1"
-                   Text="{Binding Address.Line1}"
-                   MaxLength="50"
-                   ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference Line2Entry}, Path=Focus}" />
-            <Entry x:Name="Line2Entry"
-                   Placeholder="Line 2"
-                   Text="{Binding Address.Line2}"
-                   MaxLength="50"
-                   ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference PostCodeEntry}, Path=Focus}" />
-            <Entry x:Name="PostCodeEntry"
-                   Placeholder="Post Code"
-                   Text="{Binding Address.PostCode}"
-                   MaxLength="8"
-                   ReturnType="Done"
-                   ReturnCommand="{Binding SaveCommand}" />
+    <ScrollView Padding="30">
+        <VerticalStackLayout Spacing="30">
+            <Label Text="Add details used for the recipient." />
+            <VerticalStackLayout Spacing="20">
+                <Entry x:Name="NameEntry"
+                       Placeholder="Name"
+                       Text="{Binding Address.Name}"
+                       MaxLength="50"
+                       ReturnType="Next"
+                       ReturnCommand="{Binding Source={x:Reference Line1Entry}, Path=Focus}" />
+                <Entry x:Name="Line1Entry"
+                       Placeholder="Line 1"
+                       Text="{Binding Address.Line1}"
+                       MaxLength="50"
+                       ReturnType="Next"
+                       ReturnCommand="{Binding Source={x:Reference Line2Entry}, Path=Focus}" />
+                <Entry x:Name="Line2Entry"
+                       Placeholder="Line 2"
+                       Text="{Binding Address.Line2}"
+                       MaxLength="50"
+                       ReturnType="Next"
+                       ReturnCommand="{Binding Source={x:Reference PostCodeEntry}, Path=Focus}" />
+                <Entry x:Name="PostCodeEntry"
+                       Placeholder="Post Code"
+                       Text="{Binding Address.PostCode}"
+                       MaxLength="8"
+                       ReturnType="Done"
+                       ReturnCommand="{Binding SaveCommand}" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </Grid>
+    </ScrollView>
 </ContentPage>

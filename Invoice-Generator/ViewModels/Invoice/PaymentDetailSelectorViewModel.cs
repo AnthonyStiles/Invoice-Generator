@@ -16,6 +16,9 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
     public InvoiceModel invoice;
 
     [ObservableProperty]
+    private string? instruction;
+
+    [ObservableProperty]
     public ObservableCollection<PaymentDetailModel> paymentDetails = [];
 
     [ObservableProperty]
@@ -38,6 +41,10 @@ public partial class PaymentDetailSelectorViewModel(IRepository repository) : Ob
         PaymentDetails.Clear();
         var data = repository.GetAll<PaymentDetail>().ToPaymentDetailModels();
         PaymentDetails = new ObservableCollection<PaymentDetailModel>(data);
+
+        Instruction = PaymentDetails.Count > 0
+            ? "What details can the customer use to pay? (Optional)"
+            : "Create payment details so they can be selected here. (Optional)";
     }
 
     [RelayCommand]

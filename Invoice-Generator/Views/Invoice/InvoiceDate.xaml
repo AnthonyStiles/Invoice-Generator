@@ -10,16 +10,13 @@
                      Command="{Binding FinishCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto, Auto"
-              Padding="30"
-              RowSpacing="30">
-
-            <Label Text="When is the recipient being invoiced?" />
-
-            <DatePicker Grid.Row="1"
-                        MinimumDate="01/01/2000"
-                        MaximumDate="12/31/2040"
-                        Date="{Binding InvoiceDate}" />
-        </Grid>
+        <ScrollView Padding="30">
+            <VerticalStackLayout Spacing="30">
+                <Label Text="When is the recipient being invoiced?" />
+                <DatePicker MinimumDate="01/01/2000"
+                            MaximumDate="12/31/2040"
+                            Date="{Binding InvoiceDate}" />
+            </VerticalStackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

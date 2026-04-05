@@ -14,7 +14,7 @@
     <ContentPage.Content>
         <Grid Padding="30"
               RowSpacing="30"
-              RowDefinitions="Auto, *">
+              RowDefinitions="Auto, Auto">
             <Label Text="{Binding Instruction}" />
             <CollectionView Grid.Row="1"
                             ItemsSource="{Binding InvoiceList}"

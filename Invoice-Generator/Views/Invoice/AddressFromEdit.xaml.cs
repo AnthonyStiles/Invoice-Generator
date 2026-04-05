@@ -10,9 +10,4 @@ public partial class AddressFromEdit : ContentPage
         InitializeComponent();
         BindingContext = new AddressFromEditViewModel(repository);
     }
-
-    private void OnEntryLoaded(object sender, EventArgs e)
-    {
-        NameEntry.Focus();
-    }
 }

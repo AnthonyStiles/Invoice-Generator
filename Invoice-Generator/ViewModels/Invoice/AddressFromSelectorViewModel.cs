@@ -18,6 +18,9 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
     private ObservableCollection<AddressFromModel> addresses = [];
 
     [ObservableProperty]
+    private string? instruction;
+
+    [ObservableProperty]
     public InvoiceModel invoice;
 
     [ObservableProperty]
@@ -44,6 +47,10 @@ public partial class AddressFromSelectorViewModel(IRepository repository) : Obse
         Addresses.Clear();
         var data = repository.GetAll<AddressFrom>().ToAddressFromModels();
         Addresses = new ObservableCollection<AddressFromModel>(data);
+
+        Instruction = Addresses.Count > 0
+            ? "Who is the invoice from?"
+            : "Create an address so it can be selected here.";
     }
 
     [RelayCommand]

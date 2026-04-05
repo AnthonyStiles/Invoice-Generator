@@ -9,43 +9,41 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="check" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
-    <Grid
-        RowDefinitions="Auto, *"
-        Padding="30"
-        RowSpacing="30">
-        <Label Text="Add details used for the payment details." />
-        <VerticalStackLayout Grid.Row="1" Spacing="20">
-            <Entry x:Name="NameEntry"
-                   Placeholder="Bank Name"
-                   Text="{Binding PaymentDetail.Bank}"
-                   MaxLength="50"
-                   ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference AccountHolderEntry}, Path=Focus}"
-                   Loaded="OnEntryLoaded" />
-            <Entry x:Name="AccountHolderEntry"
-                   Placeholder="Account Holder"
-                   Text="{Binding PaymentDetail.AccountHolder}"
-                   MaxLength="50"
-                   ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference SortCodeEntry}, Path=Focus}" />
-            <Entry x:Name="SortCodeEntry"
-                   Placeholder="Sort Code"
-                   Keyboard="Numeric"
-                   Text="{Binding PaymentDetail.SortCode}"
-                   MaxLength="8"
-                   ReturnType="Next"
-                   ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}">
-                <Entry.Behaviors>
-                    <behaviours:SortCodeMaskBehaviour />
-                </Entry.Behaviors>
-            </Entry>
-            <Entry x:Name="AccountNumberEntry"
-                   Placeholder="Account Number"
-                   Keyboard="Numeric"
-                   Text="{Binding PaymentDetail.AccountNumber}"
-                   MaxLength="8"
-                   ReturnType="Done"
-                   ReturnCommand="{Binding SaveCommand}" />
+    <ScrollView Padding="30">
+        <VerticalStackLayout Spacing="30">
+            <Label Text="Add details used for the payment details." />
+            <VerticalStackLayout Spacing="20">
+                <Entry x:Name="NameEntry"
+                       Placeholder="Bank Name"
+                       Text="{Binding PaymentDetail.Bank}"
+                       MaxLength="50"
+                       ReturnType="Next"
+                       ReturnCommand="{Binding Source={x:Reference AccountHolderEntry}, Path=Focus}" />
+                <Entry x:Name="AccountHolderEntry"
+                       Placeholder="Account Holder"
+                       Text="{Binding PaymentDetail.AccountHolder}"
+                       MaxLength="50"
+                       ReturnType="Next"
+                       ReturnCommand="{Binding Source={x:Reference SortCodeEntry}, Path=Focus}" />
+                <Entry x:Name="SortCodeEntry"
+                       Placeholder="Sort Code"
+                       Keyboard="Numeric"
+                       Text="{Binding PaymentDetail.SortCode}"
+                       MaxLength="8"
+                       ReturnType="Next"
+                       ReturnCommand="{Binding Source={x:Reference AccountNumberEntry}, Path=Focus}">
+                    <Entry.Behaviors>
+                        <behaviours:SortCodeMaskBehaviour />
+                    </Entry.Behaviors>
+                </Entry>
+                <Entry x:Name="AccountNumberEntry"
+                       Placeholder="Account Number"
+                       Keyboard="Numeric"
+                       Text="{Binding PaymentDetail.AccountNumber}"
+                       MaxLength="8"
+                       ReturnType="Done"
+                       ReturnCommand="{Binding SaveCommand}" />
+            </VerticalStackLayout>
         </VerticalStackLayout>
-    </Grid>
+    </ScrollView>
 </ContentPage>

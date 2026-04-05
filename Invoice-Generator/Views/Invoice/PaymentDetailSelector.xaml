@@ -12,40 +12,38 @@
         <ToolbarItem Text="Skip"
                      Command="{Binding NavigateNextCommand }" />
     </ContentPage.ToolbarItems>
-    <ContentView>
-        <Grid
-            RowDefinitions="Auto, *"
-            Padding="30"
-            RowSpacing="30">
-            <Label Text="What details can the customer use to pay?" />
-            <CollectionView x:Name="PaymentDetailList"
-                            ItemsSource="{Binding PaymentDetails}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding SelectedPaymentDetail}"
-                            SelectionChangedCommand="{Binding PaymentDetailChangedCommand}"
-                            Grid.Row="1">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:PaymentDetailModel">
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem IconImageSource="delete"
-                                               Command="{Binding BindingContext.DeletePaymentDetailCommand, Source={x:Reference PaymentDetailSelectorView}}"
-                                               CommandParameter="{Binding .}" />
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Border Style="{StaticResource CardStyle}">
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding Bank}" />
-                                    <Label Text="{Binding AccountHolder}" />
-                                    <Label Text="{Binding SortCode}" />
-                                    <Label Text="{Binding AccountNumber}" />
-                                </VerticalStackLayout>
-                            </Border>
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </ContentView>
+    <Grid
+        Padding="30"
+        RowDefinitions="Auto, Auto"
+        RowSpacing="30">
+        <Label Text="{Binding Instruction}" />
+        <CollectionView x:Name="PaymentDetailList"
+                        ItemsSource="{Binding PaymentDetails}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedPaymentDetail}"
+                        SelectionChangedCommand="{Binding PaymentDetailChangedCommand}"
+                        Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PaymentDetailModel">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem IconImageSource="delete"
+                                           Command="{Binding BindingContext.DeletePaymentDetailCommand, Source={x:Reference PaymentDetailSelectorView}}"
+                                           CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Border Style="{StaticResource CardStyle}">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Bank}" />
+                                <Label Text="{Binding AccountHolder}" />
+                                <Label Text="{Binding SortCode}" />
+                                <Label Text="{Binding AccountNumber}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
