@@ -4,7 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Invoice_Generator.ViewModels.Settings"
              x:Class="Invoice_Generator.Views.Settings.PrivacyPolicy"
-             x:DataType="viewmodels:PrivacyPolicyViewModel">
+             x:DataType="viewmodels:PrivacyPolicyViewModel"
+             Title="Privacy Policy">
     <Grid>
         <WebView Source="{ Binding HtmlSource }" />
     </Grid>

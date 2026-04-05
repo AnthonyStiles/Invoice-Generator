@@ -17,4 +17,10 @@ public partial class SettingsViewModel : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(PrivacyPolicy));
     }
+
+    [RelayCommand]
+    private async Task OpenTermsAndConditionsAsync()
+    {
+        await Shell.Current.GoToAsync(nameof(TermsAndConditions));
+    }
 }

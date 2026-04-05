@@ -13,13 +13,13 @@ public partial class LicensesViewModel : ObservableObject
     {
         try
         {
-            using var stream = await FileSystem.OpenAppPackageFileAsync("Licenses.txt");
+            await using var stream = await FileSystem.OpenAppPackageFileAsync("Licenses.txt");
             using var reader = new StreamReader(stream);
             LicenseText = await reader.ReadToEndAsync();
         }
-        catch (Exception ex)
+        catch
         {
-            LicenseText = $"Error loading licenses: {ex.Message}";
+            LicenseText = $"Error loading licenses.";
         }
     }
 }
