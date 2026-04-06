@@ -18,6 +18,6 @@
                 Text="View Terms and Conditions"
                 Command="{Binding OpenTermsAndConditionsCommand}" />
         <Label Grid.Row="3"
-                Text="Copyright © 2026 Anthony Stiles. All rights reserved." />
+               Text="Copyright © 2026 Anthony Stiles. All rights reserved." />
     </Grid>
 </ContentPage>

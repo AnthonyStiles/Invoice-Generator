@@ -13,10 +13,10 @@ namespace Invoice_Generator.ViewModels.Invoice;
 public partial class PaymentDetailSelectorViewModel(IRepository repository) : ObservableObject
 {
     [ObservableProperty]
-    public InvoiceModel invoice;
+    private string? instruction;
 
     [ObservableProperty]
-    private string? instruction;
+    public InvoiceModel invoice;
 
     [ObservableProperty]
     public ObservableCollection<PaymentDetailModel> paymentDetails = [];

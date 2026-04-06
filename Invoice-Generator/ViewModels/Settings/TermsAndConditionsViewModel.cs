@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Invoice_Generator.Helpers;
 
 namespace Invoice_Generator.ViewModels.Settings;
 
@@ -11,15 +12,6 @@ public partial class TermsAndConditionsViewModel : ObservableObject
     [RelayCommand]
     private async Task LoadTermsAndConditionsAsync()
     {
-        try
-        {
-            await using var stream = await FileSystem.OpenAppPackageFileAsync("ELUA.txt");
-            using var reader = new StreamReader(stream);
-            TermsAndConditionsText = await reader.ReadToEndAsync();
-        }
-        catch (Exception ex)
-        {
-            TermsAndConditionsText = $"Error loading terms and conditions.";
-        }
+        TermsAndConditionsText = await ResourceFileReader.Read("EULA.txt", "Error loading Terms and Conditions.");
     }
 }

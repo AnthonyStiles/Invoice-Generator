@@ -6,6 +6,7 @@ using Invoice_Generator.Infrastructure;
 using Invoice_Generator.Infrastructure.Data;
 using Invoice_Generator.Infrastructure.InvoiceGeneration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace Invoice_Generator;
 
@@ -18,7 +19,17 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMauiCommunityToolkit()
+            .UseMauiCommunityToolkit(static options =>
+            {
+                options.SetPopupOptionsDefaults(new DefaultPopupOptionsSettings
+                {
+                    Shape = new RoundRectangle
+                    {
+                        CornerRadius = new CornerRadius(4),
+                        StrokeThickness = 0
+                    }
+                });
+            })
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

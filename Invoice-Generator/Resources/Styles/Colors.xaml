@@ -11,11 +11,13 @@
     <Color x:Key="MediumGrey">#4A4F59</Color>
     <Color x:Key="White">#FFFFFF</Color>
     <Color x:Key="Red">#D32F2F</Color>
+    <Color x:Key="LightGrey">#E9ECEF</Color>
 
     <!-- Dark theme -->
     <Color x:Key="NearlyBlack">#0B0E14</Color>
     <Color x:Key="BlueGrey">#97A3B6</Color>
     <Color x:Key="NavyGrey">#161B22</Color>
     <Color x:Key="LightRed">#FF6B6B</Color>
+    <Color x:Key="DeepSlateGrey">#1C212B</Color>
 
 </ResourceDictionary>

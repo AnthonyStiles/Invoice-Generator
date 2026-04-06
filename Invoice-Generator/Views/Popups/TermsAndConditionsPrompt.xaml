@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               xmlns:viewmodels="clr-namespace:Invoice_Generator.ViewModels.Popups"
+               x:Class="Invoice_Generator.Views.Popups.TermsAndConditionsPrompt"
+               x:DataType="viewmodels:TermsAndConditionsPromptViewModel"
+               BackgroundColor="{AppThemeBinding Light={StaticResource NearlyWhite}, Dark={StaticResource NearlyBlack}}">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="20">
+            <Label Text="You must read and accept the terms and conditions before creating any invoices with this app." />
+            <Label Text="You can view the terms and privacy policy in the settings screen at any time." />
+            <ScrollView
+                HeightRequest="200"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LightGrey}, Dark={StaticResource DeepSlateGrey}}">
+                <Label Text="{Binding TermsAndConditionsText}" />
+            </ScrollView>
+            <Button Text="Accept"
+                    Command="{Binding AcceptTermsCommand}" />
+            <Button Text="Decline"
+                    Command="{Binding DeclineTermsCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</toolkit:Popup>
