@@ -12,4 +12,11 @@ public static class StartupSetup
         services.AddDbContext<AppDBContext>(options =>
             options.UseSqlite($"Data Source={Path.Combine(path, "data.db")};Password={password};"));
     }
+
+    public static void InitialiseDatabase(this IServiceProvider services)
+    {
+        using var scope = services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDBContext>();
+        dbContext.Database.Migrate();
+    }
 }

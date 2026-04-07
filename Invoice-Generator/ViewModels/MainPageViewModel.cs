@@ -40,7 +40,7 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
     [RelayCommand]
     private async Task InvoiceChangedAsync()
     {
-        var filePath = Path.Combine(FileSystem.AppDataDirectory, SelectedInvoice.Number);
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, $"{SelectedInvoice.Number}_{DateTime.Now:HH:mm:ss}");
         invoiceGenerator.GenerateInvoice(SelectedInvoice.ToInvoice(), filePath);
 
         await Share.Default.RequestAsync(new ShareFileRequest
@@ -48,6 +48,8 @@ public partial class MainPageViewModel(IRepository repository, IInvoiceGenerator
             Title = "Print PDF",
             File = new ShareFile(filePath)
         });
+
+        File.Delete(filePath);
 
         SelectedInvoice = null;
     }

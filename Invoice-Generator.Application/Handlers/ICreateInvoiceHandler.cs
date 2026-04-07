@@ -1,8 +1,8 @@
-using Invoice_Generator.Domain.Entities;
+using Invoice_Generator.Application.Data;
 
 namespace Invoice_Generator.Application.Handlers;
 
 public interface ICreateInvoiceHandler
 {
-    public void Handle(Invoice invoice);
+    public void Handle(CreateInvoiceData data);
 }

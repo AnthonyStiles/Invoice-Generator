@@ -3,21 +3,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Invoice_Generator.ViewModels.Settings"
+             xmlns:behaviours="clr-namespace:Invoice_Generator.Behaviours"
              x:Class="Invoice_Generator.Views.Settings.Settings"
              x:DataType="viewmodels:SettingsViewModel">
-    <Grid ColumnDefinitions="*"
-          RowDefinitions="Auto, Auto, Auto, Auto"
-          Padding="30,30"
-          RowSpacing="20">
-        <Button Text="View Privacy Policy"
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="20">
+            <Grid
+                ColumnDefinitions="Auto, *"
+                ColumnSpacing="10">
+                <Label
+                    VerticalOptions="Center"
+                    Text="Next Invoice Number" />
+                <Entry
+                    Grid.Column="1"
+                    Text="{Binding InvoiceNumber}"
+                    Keyboard="Numeric">
+                    <Entry.Behaviors>
+                        <behaviours:ForceIntegerBehaviour />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+            <Button Text="Save"
+                    Command="{Binding SaveCommand}" />
+            <BoxView
+                HeightRequest="1"
+                Margin="0,10" />
+            <Button
+                Text="View Privacy Policy"
                 Command="{Binding OpenPrivacyPolicyCommand}" />
-        <Button Grid.Row="1"
+            <Button
                 Text="View Licenses"
                 Command="{Binding OpenLicensesCommand}" />
-        <Button Grid.Row="2"
+            <Button
                 Text="View Terms and Conditions"
                 Command="{Binding OpenTermsAndConditionsCommand}" />
-        <Label Grid.Row="3"
-               Text="Copyright © 2026 Anthony Stiles. All rights reserved." />
-    </Grid>
+            <Label
+                Text="Copyright © 2026 Anthony Stiles. All rights reserved." />
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

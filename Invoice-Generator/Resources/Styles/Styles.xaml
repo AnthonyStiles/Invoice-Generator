@@ -57,6 +57,11 @@
         <Setter Property="MinimumWidthRequest" Value="44" />
     </Style>
 
+    <Style TargetType="BoxView">
+        <Setter Property="Color"
+                Value="{AppThemeBinding Light={StaticResource MediumGrey}, Dark={StaticResource BlueGrey}}" />
+    </Style>
+
     <Style TargetType="Label">
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource MediumGrey}, Dark={StaticResource BlueGrey}}" />

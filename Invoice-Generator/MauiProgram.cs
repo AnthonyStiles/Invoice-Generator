@@ -48,6 +48,8 @@ public static class MauiProgram
 
         var app = builder.Build();
 
+        app.Services.InitialiseDatabase();
+
         return app;
     }
 }

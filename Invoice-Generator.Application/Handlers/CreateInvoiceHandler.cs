@@ -1,28 +1,17 @@
+using Invoice_Generator.Application.Data;
 using Invoice_Generator.Application.Interfaces;
 using Invoice_Generator.Domain;
-using Invoice_Generator.Domain.Entities;
 
 namespace Invoice_Generator.Application.Handlers;
 
 public class CreateInvoiceHandler(IRepository repository) : ICreateInvoiceHandler
 {
-    public void Handle(Invoice invoice)
+    public void Handle(CreateInvoiceData data)
     {
-        var statistics = repository.GetAll<Statistics>().FirstOrDefault();
-
-        if (statistics == null)
+        if (data.Invoice != null)
         {
-            statistics = new Statistics();
-            statistics.IncrementTotalInvoicesGenerated();
-            repository.Add(statistics);
+            data.Invoice.Number = InvoiceNumberFormatter.Format(data.InvoiceNumber, data.Invoice.Invoiced);
+            repository.Add(data.Invoice);
         }
-        else
-        {
-            statistics.IncrementTotalInvoicesGenerated();
-            repository.Update(statistics);
-        }
-
-        invoice.Number = InvoiceNumberFormatter.Format(statistics.TotalInvoicesGenerated, invoice.Invoiced);
-        repository.Add(invoice);
     }
 }
