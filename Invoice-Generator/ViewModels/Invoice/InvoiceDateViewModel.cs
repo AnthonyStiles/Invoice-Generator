@@ -34,6 +34,8 @@ public partial class InvoiceDateViewModel : ObservableObject
     [RelayCommand]
     private async Task FinishAsync()
     {
+        SentrySdk.CaptureMessage("Invoice generated.");
+        
         Invoice.Invoiced = InvoiceDate;
 
         var newInvoice = Invoice.ToInvoice();

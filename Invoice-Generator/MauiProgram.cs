@@ -30,6 +30,9 @@ public static class MauiProgram
                     }
                 });
             })
+            .UseSentry(options => {
+                options.Dsn = Secrets.Sentry_DSN;
+            })
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

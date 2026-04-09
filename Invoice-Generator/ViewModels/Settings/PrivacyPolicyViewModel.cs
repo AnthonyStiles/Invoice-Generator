@@ -6,7 +6,7 @@ namespace Invoice_Generator.ViewModels.Settings;
 public partial class PrivacyPolicyViewModel : ObservableObject
 {
     private const string PrivacyPolicyUrl =
-        "https://gist.githubusercontent.com/AnthonyStiles/05b151fcba1c4eeadb082bd695409c4f/raw/9c6cf5b9adc33b01672b45af524f2ef12c40546f/invoiced-privacy-policy.html";
+        "https://gist.githubusercontent.com/AnthonyStiles/05b151fcba1c4eeadb082bd695409c4f/raw/7ef82af6e7384914722cf588f06cef3cdf66bd8a/invoiced-privacy-policy.html";
 
     [ObservableProperty]
     private HtmlWebViewSource htmlSource;

@@ -45,6 +45,7 @@ Icon
 *.app.dSYM.zip
 
 # --- Packages & Secrets ---
+Secrets.cs
 *.suo
 *.user
 *.userosscache
