@@ -43,7 +43,7 @@ public partial class InvoiceDateViewModel : ObservableObject
 
         _createInvoiceHandler.Handle(new CreateInvoiceData { Invoice = newInvoice, InvoiceNumber = invoiceNumber });
 
-        var filePath = Path.Combine(FileSystem.AppDataDirectory, $"{newInvoice.Number}_{DateTime.Now:HH:mm:ss}");
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, $"{newInvoice.Number}_{DateTime.Now:HH:mm:ss}.pdf");
         _invoiceGenerator.GenerateInvoice(newInvoice, filePath);
 
         InvoiceNumberHelper.IncrementInvoiceNumber();
